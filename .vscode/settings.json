@@ -2,5 +2,6 @@
     "files.watcherExclude": {
         "**/Icon?": true
     },
-    "liveServer.settings.port": 5501
+    "liveServer.settings.port": 5501,
+    "livePreview.defaultPreviewPath": "/site/doc/index.html"
 }
