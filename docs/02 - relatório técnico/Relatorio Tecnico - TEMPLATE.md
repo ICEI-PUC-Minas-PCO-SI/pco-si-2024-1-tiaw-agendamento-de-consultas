@@ -147,10 +147,14 @@ A aplicação busca gerenciar agendamentos para que não haja sobreposição de 
 
 Com base na análise das personas forma identificadas as seguintes histórias de usuários:
 
-|EU COMO... `PERSONA`| QUERO/PRECISO ... `FUNCIONALIDADE` |PARA ... `MOTIVO/VALOR`                 |
-|--------------------|------------------------------------|----------------------------------------|
-|Usuário do sistema  | Registrar minhas tarefas           | Não esquecer de fazê-las               |
-|Administrador       | Alterar permissões                 | Permitir que possam administrar contas |
+|EU COMO... `PERSONA`| QUERO/PRECISO ... `FUNCIONALIDADE`             |PARA ... `MOTIVO/VALOR`                                           |
+|--------------------|------------------------------------------------|------------------------------------------------------------------|
+|Marcelo Ferraz      | Agendar consultas online                       | Para economizar tempo evitando o deslocamento até a clinica      |
+|Pedro               | Selecionar uma clínica/hospital de preferência | Para escolher o local mais adequado para mim                     |
+|Marina              | Gerir as consultas por meio da internet        | Para facilitar a gestão das consultas e otimizar meu trabalho    |
+|Marcelo Ferraz      | Marcar consultas em horário e dia especifico   | Para se adequar à minha rotina                                   |
+|Marcelo Ferraz      | Escolher um médico de preferência              | Para ser atendido por um médico que me recomendaram ou conhecido |
+|Pedro               | Confirmação de dados durante o agendamento     | Para evitar a entrada de dados incorretos                        |
 
 > Apresente aqui as histórias de usuário que são relevantes para o
 > projeto de sua solução. As Histórias de Usuário consistem em uma
