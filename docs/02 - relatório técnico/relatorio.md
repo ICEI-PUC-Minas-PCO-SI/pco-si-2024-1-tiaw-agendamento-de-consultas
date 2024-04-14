@@ -156,18 +156,6 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 |Marcelo Ferraz      | Escolher um médico de preferência              | Para ser atendido por um médico que me recomendaram ou conhecido |
 |Pedro               | Confirmação de dados durante o agendamento     | Para evitar a entrada de dados incorretos                        |
 
-> Apresente aqui as histórias de usuário que são relevantes para o
-> projeto de sua solução. As Histórias de Usuário consistem em uma
-> ferramenta poderosa para a compreensão e elicitação dos requisitos
-> funcionais e não funcionais da sua aplicação. Se possível, agrupe as
-> histórias de usuário por contexto, para facilitar consultas
-> recorrentes à essa parte do documento.
->
-> **Links Úteis**:
->
-> - [Histórias de usuários com exemplos e template](https://www.atlassian.com/br/agile/project-management/user-stories)
-> - [Como escrever boas histórias de usuário (User Stories)](https://medium.com/vertice/como-escrever-boas-users-stories-hist%C3%B3rias-de-usu%C3%A1rios-b29c75043fac)
-
 ## Requisitos
 
 As tabelas que se seguem apresentam os requisitos funcionais e não funcionais que detalham o escopo do projeto.
@@ -186,27 +174,6 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |RNF-001| O sistema deve ser responsivo para rodar em um dispositivos móvel | MÉDIA |
 |RNF-002| Deve processar requisições do usuário em no máximo 3s |  BAIXA |
 
-> Com base nas Histórias de Usuário, enumere os requisitos da sua
-> solução. Classifique esses requisitos em dois grupos:
->
-> - [Requisitos Funcionais (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
->   correspondem a uma funcionalidade que deve estar presente na
->   plataforma (ex: cadastro de usuário).
->
-> - [Requisitos Não Funcionais (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
->   correspondem a uma característica técnica, seja de usabilidade,
->   desempenho, confiabilidade, segurança ou outro (ex: suporte a
->   dispositivos iOS e Android).
->
-> Lembre-se que cada requisito deve corresponder à uma e somente uma
-> característica alvo da sua solução. Além disso, certifique-se de que
-> todos os aspectos capturados nas Histórias de Usuário foram cobertos.
->
-> **Links Úteis**:
->
-> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
-
 ## Restrições
 
 O projeto está restrito pelos itens apresentados na tabela a seguir.
@@ -216,61 +183,149 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 |01| O projeto deverá ser entregue até o final do semestre |
 |02| Não pode ser desenvolvido um módulo de backend        |
 
-> Enumere as restrições à sua solução. Lembre-se de que as restrições
-> geralmente limitam a solução candidata.
->
-> **Links Úteis**:
->
-> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
 
 # Projeto de Interface
 
 ......  COLOQUE AQUI O SEU TEXTO DE INTRODUÇÃO ......
 
-> Apresente as principais interfaces da solução. Discuta como
-> foram elaboradas de forma a atender os requisitos funcionais, não
-> funcionais e histórias de usuário abordados nas [Especificações do
-> Projeto](#especificações-do-projeto).
 
 ## User Flow
 
-......  INCLUA AQUI O DIAGRAMA COM O FLUXO DO USUÁRIO NA APLICAÇÃO ......
+```mermaid
+graph TD
 
-> Fluxo de usuário (User Flow) é uma técnica que permite ao desenvolvedor
-> mapear todo fluxo de telas do site ou app. Essa técnica funciona
-> para alinhar os caminhos e as possíveis ações que o usuário pode
-> fazer junto com os membros de sua equipe.
->
-> **Links Úteis**:
->
-> - [User Flow: O Quê É e Como Fazer?](https://medium.com/7bits/fluxo-de-usu%C3%A1rio-user-flow-o-que-%C3%A9-como-fazer-79d965872534)
-> - [User Flow vs Site Maps](http://designr.com.br/sitemap-e-user-flow-quais-as-diferencas-e-quando-usar-cada-um/)
-> - [Top 25 User Flow Tools & Templates for Smooth](https://www.mockplus.com/blog/post/user-flow-tools)
->
-> **Exemplo**:
->
-> ![Exemplo de UserFlow](images/userflow.jpg)
+TI["`Tela inicial`"] 
+CHAT["`Chat de ajuda da aplicação`"]
+BV["Tela de Boas Vindas"]
+LOGIN["`Já tem cadastro`"]
+CADASTRO["`Cadastrar usuário`"]
+DADOS["Preenchimento dos dados"]
+VALIDACAO["Validação dos dados do usuário"]
+ATEN["Tipo de atendimento"]
+DOCS["`Scaniamento de documentos`"]
+CONS["`Agendar consulta`"]
+CONV["`Envio convenio`"]
+DAT["`Seleção da data e hora`"]
+FIM["`Avaliação da experiencia`"]
+SELECDAT["Selecionar data"]
+SELECHOR["Selecionar horário para iniciar atentimento"]
+SELECVIEW["Selecionar documento para visualizar"]
+
+TI --> BV
+TI --> CHAT
+BV -- Usuário ja cadastrado --> LOGIN
+LOGIN ------>|É usuário| VALIDACAO
+
+BV -- Novo usuário --> CADASTRO
+CADASTRO --> DADOS
+DADOS -- Cadastra usuário --> VALIDACAO
+VALIDACAO -- Edição dos dados preencidos --> DADOS
+VALIDACAO --> ATEN
+ATEN -- Exame por encaminhamento --> DOCS
+ATEN -- Consulta por encaminhamento --> DOCS
+ATEN -- Agendar consulta --> CONS
+CONS -- Envio do convênio --> CONV
+DOCS -- Uploa dos documentos --> DAT
+CONV --> DAT
+DAT -- Envio do agendamento e validação --> FIM
+
+LOGIN ----->|É Administador| SELECDAT
+SELECDAT-->SELECHOR
+SELECHOR --->|Finalizar atendimento| SELECDAT
+SELECHOR ----> SELECVIEW
+SELECVIEW --->|Finalizar atendimento| SELECDAT
+SELECVIEW --> PDF[PDF's]
+
+```
+
 
 ## Wireframes
+Fluxos de uso:
+  - Fluxo de agendamento de consulta
+    - Login e validação
+    - Seleção do tipo de atendimento
+    - Agendar uma consulta
+    - Agendamento 
+    - Seleção de data
+    - Agendar um exame
+    - Consulta por encaminhamento médico
+    - Envio de documentos
+  - Fluxo de horários do médico/clinica
+    - Seleção data
+    - Seleção de horário
+    - Selecione documento para visualização
+    - PDFs de paciente
+### Fluxo Agendamento
+> **Tela inicial**
+>
+> ![Exemplo de Persona](./images/wireframe01.png)
 
-......  INCLUA AQUI OS WIREFRAMES DAS TELAS DA APLICAÇÃO COM UM BREVE DESCRITIVO ......
+>
+> **Tela de opção de cadastro ou login**
+>
+> ![Exemplo de Persona](./images/wireframe02.png)
+>
 
-> Wireframes são protótipos das telas da aplicação usados em design de interface para sugerir a
-> estrutura de um site web e seu relacionamentos entre suas
-> páginas. Um wireframe web é uma ilustração semelhante ao
-> layout de elementos fundamentais na interface.
+> **Tela de login** 
+>Identificação do tipo de usuário para enviar para a tela correta 
+> - Administardor - Tela de horários e consultas
+> - Usuario - tela de agendamento e cadastro
+> ![Exemplo de Persona](./images/wireframe03.png)
 >
-> **Links Úteis**:
+
+> **Tela de cadastro de Usuário** 
+> Inserção dos dados de usuário para cadastro
 >
-> - [Ferramentas de Wireframes](https://rockcontent.com/blog/wireframes/)
-> - [Figma](https://www.figma.com/)
-> - [Adobe XD](https://www.adobe.com/br/products/xd.html#scroll)
-> - [MarvelApp](https://marvelapp.com/developers/documentation/tutorials/)
+> ![Exemplo de Persona](./images/wireframe04.png)
 >
-> **Exemplo**:
+
+> **Validação dos dados** 
+> Validação dos dados inseridos da tela de cadastro para verificação das informações
 >
-> ![Exemplo de Wireframe](images/wireframe-example.png)
+> ![Exemplo de Persona](./images/wireframe05.png)
+>
+
+> **Seleção do tipo de atendimento** 
+> Usuário seleciona o tipo de atendimento que vai continuar.
+> - Agendamento de consulta
+> - Agendamento de exame
+> - Agendamento de consulta por encaminhamento médico
+>
+> ![Exemplo de Persona](./images/wireframe06.png)
+>
+
+> **Envio de documentos** 
+> Envio dos documentos da consula de encaminhamento
+> - Carterinha de convênio
+> - Enviar pedido médico do encaminhamento
+> ![Exemplo de Persona](./images/wireframe07.png)
+>
+
+> **Agendar consulta sem encaminhamento** 
+> Seleção do agendamento de consulta sem encaminhamento
+> - Tipo de agendamento
+> - Especialidade desejada
+> - Clinica de preferência (Opcional)
+> - Profissional de preferência (Opcional)
+> ![Exemplo de Persona](./images/wireframe08.png)
+>
+
+> **Horários disponíveis** 
+> Seleção do dia e horário disponiveis
+> - Seleção da data disponível desejada
+> - Seleção do horário disponível desejado
+> ![Exemplo de Persona](./images/wireframe09.png)
+>
+
+> **Avaliação** 
+> Avaliação de experiência do atendimento
+> ![Exemplo de Persona](./images/wireframe10.png)
+>
+### Fluxo Clinica/Médico
+> **Avaliação** 
+> Avaliação de experiência do atendimento
+> ![Exemplo de Persona](./images/wireframe11.png)
+>
 
 # Metodologia
 
@@ -286,23 +341,12 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 > o andamento do projeto, a execução das tarefas e o status de desenvolvimento
 > da solução.
 >
-> **Links Úteis**:
->
-> - [Tutorial Trello](https://trello.com/b/8AygzjUA/tutorial-trello)
-> - [Gestão ágil de projetos com o Trello](https://www.youtube.com/watch?v=1o9BOMAKBRE)
-> - [Gerência de projetos - Trello com Scrum](https://www.youtube.com/watch?v=DHLA8X_ujwo)
-> - [Tutorial Slack](https://slack.com/intl/en-br/)
 
 ## Divisão de Papéis
 
 ......  COLOQUE AQUI O SEU TEXTO ......
 
-> Apresente a divisão de papéis e tarefas entre os membros do grupo.
->
-> **Links Úteis**:
->
-> - [11 Passos Essenciais para Implantar Scrum no seu Projeto](https://mindmaster.com.br/scrum-11-passos/)
-> - [Scrum em 9 minutos](https://www.youtube.com/watch?v=XfvQWnRgxG0)
+
 
 ## Ferramentas
 
@@ -310,21 +354,18 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 | Ambiente  | Plataforma              |Link de Acesso |
 |-----------|-------------------------|---------------|
-|Processo de Design Thinkgin  | Miro |  <https://miro.com/XXXXXXX> |
-|Repositório de código | GitHub | <https://github.com/XXXXXXX> |
+|Processo de Design Thinkgin  | Miro |  <https://miro.com/app/board/uXjVNjO9Ezo=/> |
+|Repositório de código | GitHub | <https://github.com/ICEI-PUC-Minas-PCO-SI/pco-si-2024-1-tiaw-agendamento-de-consultas> |
 |Hospedagem do site | Heroku |  <https://XXXXXXX.herokuapp.com> |
 |Protótipo Interativo | MavelApp ou Figma | <https://figma.com/XXXXXXX> |
 
 >
-> Liste as ferramentas empregadas no desenvolvimento do
-> projeto, justificando a escolha delas, sempre que possível.
->
 > As ferramentas empregadas no projeto são:
 >
-> - Editor de código.
-> - Ferramentas de comunicação
-> - Ferramentas de diagramação
-> - Plataforma de hospedagem
+> - Editor de código: VisualStudio Code
+> - Ferramentas de comunicação: WhatsAp/Discord
+> - Ferramentas de diagramação: Whimscal
+> - Plataforma de hospedagem: N/A
 >
 > O editor de código foi escolhido porque ele possui uma integração com o
 > sistema de versão. As ferramentas de comunicação utilizadas possuem
@@ -375,8 +416,8 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 >
 > ![Exemplo de Wireframe](images/Github-Workflow.png)
 
+<!--
 # **############## SPRINT 1 ACABA AQUI #############**
-
 # Projeto da Solução
 
 ......  COLOQUE AQUI O SEU TEXTO ......
@@ -488,6 +529,8 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 # Estrutura do Documento
 
 - [Informações do Projeto](#informações-do-projeto)
+  - [Agendaí](#agendaí)
+    - [Sistemas de Informação](#sistemas-de-informação)
   - [Participantes](#participantes)
 - [Estrutura do Documento](#estrutura-do-documento)
 - [Introdução](#introdução)
@@ -495,8 +538,13 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
   - [Objetivos](#objetivos)
   - [Justificativa](#justificativa)
   - [Público-Alvo](#público-alvo)
-- [Especificações do Projeto](#especificações-do-projeto)
-  - [Personas, Empatia e Proposta de Valor](#personas-empatia-e-proposta-de-valor)
+    - [Pacientes](#pacientes)
+    - [Profissionais de Saúde (Médicos, Enfermeiros, e outros)](#profissionais-de-saúde-médicos-enfermeiros-e-outros)
+    - [Administradores de Clínicas e Hospitais](#administradores-de-clínicas-e-hospitais)
+    - [Equipe de Suporte Técnico](#equipe-de-suporte-técnico)
+    - [Famílias e Cuidadores](#famílias-e-cuidadores)
+  - [Especificações do Projeto](#especificações-do-projeto)
+  - [Personas e Mapas de Empatia](#personas-e-mapas-de-empatia)
   - [Histórias de Usuários](#histórias-de-usuários)
   - [Requisitos](#requisitos)
     - [Requisitos Funcionais](#requisitos-funcionais)
@@ -518,6 +566,37 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
   - [Ferramentas de Testes (Opcional)](#ferramentas-de-testes-opcional)
   - [Registros de Testes](#registros-de-testes)
 - [Referências](#referências)
+- [Informações do Projeto](#informações-do-projeto-1)
+  - [Participantes](#participantes-1)
+- [Estrutura do Documento](#estrutura-do-documento-1)
+- [Introdução](#introdução-1)
+  - [Problema](#problema-1)
+  - [Objetivos](#objetivos-1)
+  - [Justificativa](#justificativa-1)
+  - [Público-Alvo](#público-alvo-1)
+- [Especificações do Projeto](#especificações-do-projeto-1)
+  - [Personas, Empatia e Proposta de Valor](#personas-empatia-e-proposta-de-valor)
+  - [Histórias de Usuários](#histórias-de-usuários-1)
+  - [Requisitos](#requisitos-1)
+    - [Requisitos Funcionais](#requisitos-funcionais-1)
+    - [Requisitos não Funcionais](#requisitos-não-funcionais-1)
+  - [Restrições](#restrições-1)
+- [Projeto de Interface](#projeto-de-interface-1)
+  - [User Flow](#user-flow-1)
+  - [Wireframes](#wireframes-1)
+- [Metodologia](#metodologia-1)
+  - [Divisão de Papéis](#divisão-de-papéis-1)
+  - [Ferramentas](#ferramentas-1)
+  - [Controle de Versão](#controle-de-versão-1)
+- [**############## SPRINT 1 ACABA AQUI #############**](#-sprint-1-acaba-aqui--1)
+- [Projeto da Solução](#projeto-da-solução-1)
+  - [Tecnologias Utilizadas](#tecnologias-utilizadas-1)
+  - [Arquitetura da solução](#arquitetura-da-solução-1)
+- [Avaliação da Aplicação](#avaliação-da-aplicação-1)
+  - [Plano de Testes](#plano-de-testes-1)
+  - [Ferramentas de Testes (Opcional)](#ferramentas-de-testes-opcional-1)
+  - [Registros de Testes](#registros-de-testes-1)
+- [Referências](#referências-1)
 
 # Introdução
 
