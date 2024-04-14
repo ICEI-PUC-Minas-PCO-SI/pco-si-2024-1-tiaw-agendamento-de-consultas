@@ -353,30 +353,35 @@ Usuário seleciona o tipo de atendimento que vai continuar.
 
 # Metodologia
 
-Utilizamos o projeto no github para criar um quadro khanban para acompanharmos o andamento das tarefas.
+No desenvolvimento do nosso projeto, adotamos uma abordagem ágil utilizando o framework Scrum, complementado pelo processo de Design Thinking. Utilizamos cerimônias do Scrum como Sprint Planning e mantivemos o foco nas necessidades dos usuários através de etapas de empatia, definição e ideação. Para gerenciar e rastrear nosso progresso, empregamos ferramentas como Github Projects, utilizamos o GitHub para a gestão de configuração do projeto, utilizamos o WhatsApp e Discord para comunicação e votação de funcionalidades.
 
-> Nesta parte do documento, você deve apresentar a metodologia
-> adotada pelo grupo, descrevendo o processo de trabalho baseado nas metodologias ágeis,
-> a divisão de papéis e tarefas, as ferramentas empregadas e como foi realizada a
-> gestão de configuração do projeto via GitHub.
->
-> Coloque detalhes sobre o processo de Design Thinking e a implementação do Framework Scrum seguido
-> pelo grupo. O grupo poderá fazer uso de ferramentas on-line para acompanhar
-> o andamento do projeto, a execução das tarefas e o status de desenvolvimento
-> da solução.
->
+A divisão dos status de atividades foram:
+
+  - Todo: Tarefas que ainda não foram iniciadas.
+  - In Progress: Tarefas que foram iniciadas e estão sendo executadas.
+  - Inpedment: Tarefas que foram iniciadas, mas por algum motivo tem algo bloqueando sua conclusão.
+  - Done: Tarefas que foram concluídas.
+
+![khanban](./images/khanban.png)
 
 <div style="page-break-before: always"></div>
 
 ## Divisão de Papéis
 
-......  COLOQUE AQUI O SEU TEXTO ......
+As tarefas foram levantas em conjunto e divididas sob demanda na maior parte do tempo, mas inicialmente foi dividido por uma votação de tarefas levando em consideração a complexidade de cada tarefa, e as habilidades de cada integrante.
+
+Kayque: Apresentação do Trabalho e Slides. Mapa de Stakeholders.
+Talles: Mural de possibidades, Proposta de Valor e Mapa de Priorização.
+Christian: Diagrama de personas, Entrevista Qualitativa, Estórias de Usuário.
+Yuri: Entrevista Qualitativa, Highlits de Pesquisa.
+João: Wireframes, Matriz CSD, Relatório tecnico, Contexto do Projeto, Projeto de Interface, Fluxo de Usuário.
+
+Todos: BrainStorm
 
 <div style="page-break-before: always"></div>
 
 ## Ferramentas
 
-......  COLOQUE AQUI O SEU TEXTO - SIGA O EXEMPLO DA TABELA ABAIXO  ......
 
 | Ambiente  | Plataforma              |Link de Acesso |
 |-----------|-------------------------|---------------|
@@ -385,64 +390,38 @@ Utilizamos o projeto no github para criar um quadro khanban para acompanharmos o
 |Hospedagem do site | Heroku |  <https://XXXXXXX.herokuapp.com> |
 |Protótipo Interativo | MavelApp ou Figma | <https://figma.com/XXXXXXX> |
 
->
-> As ferramentas empregadas no projeto são:
->
-> - Editor de código: VisualStudio Code
-> - Ferramentas de comunicação: WhatsAp/Discord
-> - Ferramentas de diagramação: Whimscal
-> - Plataforma de hospedagem: N/A
->
-> O editor de código foi escolhido porque ele possui uma integração com o
-> sistema de versão. As ferramentas de comunicação utilizadas possuem
-> integração semelhante e por isso foram selecionadas. Por fim, para criar
-> diagramas utilizamos essa ferramenta por melhor captar as
-> necessidades da nossa solução.
->
-> **Links Úteis - Hospedagem**:
->
-> - [Getting Started with Heroku](https://devcenter.heroku.com/start)
-> - [Crie seu Site com o HostGator](https://www.hostgator.com.br/como-publicar-seu-site)
-> - [GoDady](https://br.godaddy.com/how-to)
-> - [GitHub Pages](https://pages.github.com/)
 
 <div style="page-break-before: always"></div>
 
 ## Controle de Versão
 
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Discuta como a configuração do projeto foi feita na ferramenta de
-> versionamento escolhida. Exponha como a gerência de tags, merges,
-> commits e branchs é realizada. Discuta como a gerência de issues foi
-> realizada.
-> A ferramenta de controle de versão adotada no projeto foi o
-> [Git](https://git-scm.com/), sendo que o [Github](https://github.com)
-> foi utilizado para hospedagem do repositório `upstream`.
 >
 > O projeto segue a seguinte convenção para o nome de branchs:
 >
 > - `master`: versão estável já testada do software
-> - `unstable`: versão já testada do software, porém instável
-> - `testing`: versão em testes do software
+> - `feature-#`: funcionalidade em desenvolvimento
 > - `dev`: versão de desenvolvimento do software
+> - `bugfix`: Correção de erro em teste
+> - `hotfix`: Correção de erro em produção
 >
-> Quanto à gerência de issues, o projeto adota a seguinte convenção para
-> etiquetas:
->
-> - `bugfix`: uma funcionalidade encontra-se com problemas
-> - `enhancement`: uma funcionalidade precisa ser melhorada
-> - `feature`: uma nova funcionalidade precisa ser introduzida
->
-> **Links Úteis**:
->
-> - [Tutorial GitHub](https://guides.github.com/activities/hello-world/)
-> - [Git e Github](https://www.youtube.com/playlist?list=PLHz_AreHm4dm7ZULPAmadvNhH6vk9oNZA)
-> - [5 Git Workflows & Branching Strategy to deliver better code](https://zepel.io/blog/5-git-workflows-to-improve-development/)
->
-> **Exemplo - GitHub Feature Branch Workflow**:
->
-> ![Exemplo de Wireframe](images/Github-Workflow.png)
+
+```mermaid
+---
+title: Example Git diagram
+---
+gitGraph
+  branch master
+  commit
+  commit
+  commit
+  checkout main
+  commit
+  commit
+  merge master
+  commit
+  commit
+  
+```
 
 <!--
 # **############## SPRINT 1 ACABA AQUI #############**
