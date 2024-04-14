@@ -398,7 +398,7 @@ Todos: BrainStorm
 >
 > O projeto segue a seguinte convenção para o nome de branchs:
 >
-> - `master`: versão estável já testada do software
+> - `main`: versão estável já testada do software
 > - `feature-#`: funcionalidade em desenvolvimento
 > - `dev`: versão de desenvolvimento do software
 > - `bugfix`: Correção de erro em teste
@@ -410,16 +410,39 @@ Todos: BrainStorm
 title: Example Git diagram
 ---
 gitGraph
-  branch master
+  commit
+  checkout main
+  branch develop
+  checkout develop
+  branch feature
+  checkout feature
+  commit
+  commit
+
+  checkout develop
+  merge feature
+  branch bugfix
+  commit
+  checkout develop
+  merge bugfix
+  checkout main
+  merge develop
+  checkout develop
+  branch feature2
+  checkout  feature2
   commit
   commit
   commit
   checkout main
+  branch hotfix
   commit
-  commit
-  merge master
-  commit
-  commit
+  checkout main
+  merge hotfix
+  checkout develop
+  merge main
+  checkout feature
+  merge develop
+
   
 ```
 
