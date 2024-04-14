@@ -18,6 +18,8 @@
 > - Kayque dos Santos Almeida
 > - Yuri Zocoli Silva
 
+<div style="page-break-before: always"></div>
+
 # Estrutura do Documento
 
 - [Informações do Projeto](#informações-do-projeto)
@@ -52,6 +54,8 @@
   - [Registros de Testes](#registros-de-testes)
 - [Referências](#referências)
  -->
+
+<div style="page-break-before: always"></div>
 
 # Introdução
 
@@ -125,23 +129,25 @@ O projeto busca resolver alguns problemas no setor da saúde com relação a mar
 
 A aplicação busca gerenciar agendamentos para que não haja sobreposição de horários, ou outros erros que pessoas estão sujeitas a cometer, criar controle para as pessoas que fazem agendamento acompanharem seus horários e receberem feedbacks sobre vagas e consultas com maior facilidade, tirando a necessidade de um trabalho manual para isso.
 
+<div style="page-break-before: always"></div>
 
 ## Personas e Mapas de Empatia
 
->
-> **Marcelo Ferraz**
->
-> ![Exemplo de Persona](imaages/../images/persona1.png)
+
+#### **Marcelo Ferraz**
+  ![Exemplo de Persona](imaages/../images/persona1.png)
 ---
-> **Pedro**
->
-> ![Exemplo de Persona](imaages/../images/persona2.png)
->
+<div style="page-break-before: always"></div>
+
+#### **Pedro**
+  ![Exemplo de Persona](imaages/../images/persona2.png)
 ---
-> **Marina**
->
-> ![Exemplo de Persona](imaages/../images/persona3.png)
->
+<div style="page-break-before: always"></div>
+
+### **Marina**
+  ![Exemplo de Persona](imaages/../images/persona3.png)
+
+<div style="page-break-before: always"></div>
 
 ## Histórias de Usuários
 
@@ -155,6 +161,8 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 |Marcelo Ferraz      | Marcar consultas em horário e dia especifico   | Para se adequar à minha rotina                                   |
 |Marcelo Ferraz      | Escolher um médico de preferência              | Para ser atendido por um médico que me recomendaram ou conhecido |
 |Pedro               | Confirmação de dados durante o agendamento     | Para evitar a entrada de dados incorretos                        |
+
+<div style="page-break-before: always"></div>
 
 ## Requisitos
 
@@ -184,10 +192,13 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 |02| Não pode ser desenvolvido um módulo de backend        |
 
 
+<div style="page-break-before: always"></div>
+
 # Projeto de Interface
 
 ......  COLOQUE AQUI O SEU TEXTO DE INTRODUÇÃO ......
 
+<div style="page-break-before: always"></div>
 
 ## User Flow
 
@@ -238,6 +249,7 @@ SELECVIEW --> PDF[PDF's]
 
 ```
 
+<div style="page-break-before: always"></div>
 
 ## Wireframes
 Fluxos de uso:
@@ -255,77 +267,92 @@ Fluxos de uso:
     - Seleção de horário
     - Selecione documento para visualização
     - PDFs de paciente
+
+<div style="page-break-before: always"></div>
+
 ### Fluxo Agendamento
-> **Tela inicial**
->
-> ![Exemplo de Persona](./images/wireframe01.png)
+#### **Tela inicial**
+ ![wireframe](./images/wireframe01.png)
 
->
-> **Tela de opção de cadastro ou login**
->
-> ![Exemplo de Persona](./images/wireframe02.png)
->
+<div style="page-break-before: always"></div>
 
-> **Tela de login** 
->Identificação do tipo de usuário para enviar para a tela correta 
-> - Administardor - Tela de horários e consultas
-> - Usuario - tela de agendamento e cadastro
-> ![Exemplo de Persona](./images/wireframe03.png)
->
 
-> **Tela de cadastro de Usuário** 
-> Inserção dos dados de usuário para cadastro
->
-> ![Exemplo de Persona](./images/wireframe04.png)
->
+#### **Tela de opção de cadastro ou login**
+ ![wireframe](./images/wireframe02.png)
 
-> **Validação dos dados** 
-> Validação dos dados inseridos da tela de cadastro para verificação das informações
->
-> ![Exemplo de Persona](./images/wireframe05.png)
->
+<div style="page-break-before: always"></div>
 
-> **Seleção do tipo de atendimento** 
-> Usuário seleciona o tipo de atendimento que vai continuar.
-> - Agendamento de consulta
-> - Agendamento de exame
-> - Agendamento de consulta por encaminhamento médico
->
-> ![Exemplo de Persona](./images/wireframe06.png)
->
+#### **Tela de login** 
+Identificação do tipo de usuário para enviar para a tela correta 
+- Administardor - Tela de horários e consultas
+- Usuario - tela de agendamento e cadastro
+![wireframe](./images/wireframe03.png)
 
-> **Envio de documentos** 
-> Envio dos documentos da consula de encaminhamento
-> - Carterinha de convênio
-> - Enviar pedido médico do encaminhamento
-> ![Exemplo de Persona](./images/wireframe07.png)
->
+<div style="page-break-before: always"></div>
 
-> **Agendar consulta sem encaminhamento** 
-> Seleção do agendamento de consulta sem encaminhamento
-> - Tipo de agendamento
-> - Especialidade desejada
-> - Clinica de preferência (Opcional)
-> - Profissional de preferência (Opcional)
-> ![Exemplo de Persona](./images/wireframe08.png)
->
+#### **Tela de cadastro de Usuário** 
+Inserção dos dados de usuário para cadastro
+![wireframe](./images/wireframe04.png)
 
-> **Horários disponíveis** 
-> Seleção do dia e horário disponiveis
-> - Seleção da data disponível desejada
-> - Seleção do horário disponível desejado
-> ![Exemplo de Persona](./images/wireframe09.png)
->
+<div style="page-break-before: always"></div>
 
-> **Avaliação** 
-> Avaliação de experiência do atendimento
-> ![Exemplo de Persona](./images/wireframe10.png)
->
+#### **Validação dos dados** 
+Validação dos dados inseridos da tela de cadastro para verificação das informações
+
+
+![wireframe](./images/wireframe05.png)
+
+<div style="page-break-before: always"></div>
+
+#### **Seleção do tipo de atendimento** 
+Usuário seleciona o tipo de atendimento que vai continuar.
+ - Agendamento de consulta
+ - Agendamento de exame
+ - Agendamento de consulta por encaminhamento médico
+
+![wireframe](./images/wireframe06.png)
+
+<div style="page-break-before: always"></div>
+
+
+#### **Envio de documentos** 
+ Envio dos documentos da consula de encaminhamento
+ - Carterinha de convênio
+ - Enviar pedido médico do encaminhamento
+ ![wireframe](./images/wireframe07.png)
+
+<div style="page-break-before: always"></div>
+
+#### **Agendar consulta sem encaminhamento** 
+ Seleção do agendamento de consulta sem encaminhamento
+ - Tipo de agendamento
+ - Especialidade desejada
+ - Clinica de preferência (Opcional)
+ - Profissional de preferência (Opcional)
+ ![wireframe](./images/wireframe08.png)
+
+<div style="page-break-before: always"></div>
+
+#### **Horários disponíveis** 
+ Seleção do dia e horário disponiveis
+ - Seleção da data disponível desejada
+ - Seleção do horário disponível desejado
+ ![wireframe](./images/wireframe09.png)
+
+<div style="page-break-before: always"></div>
+
+#### **Avaliação** 
+ Avaliação de experiência do atendimento
+ ![wireframe](./images/wireframe10.png)
+
+<div style="page-break-before: always"></div>
+
 ### Fluxo Clinica/Médico
-> **Avaliação** 
-> Avaliação de experiência do atendimento
-> ![Exemplo de Persona](./images/wireframe11.png)
->
+#### **Avaliação** 
+ Avaliação de experiência do atendimento
+ ![wireframe](./images/wireframe11.png)
+
+<div style="page-break-before: always"></div>
 
 # Metodologia
 
@@ -342,11 +369,13 @@ Fluxos de uso:
 > da solução.
 >
 
+<div style="page-break-before: always"></div>
+
 ## Divisão de Papéis
 
 ......  COLOQUE AQUI O SEU TEXTO ......
 
-
+<div style="page-break-before: always"></div>
 
 ## Ferramentas
 
@@ -379,6 +408,8 @@ Fluxos de uso:
 > - [Crie seu Site com o HostGator](https://www.hostgator.com.br/como-publicar-seu-site)
 > - [GoDady](https://br.godaddy.com/how-to)
 > - [GitHub Pages](https://pages.github.com/)
+
+<div style="page-break-before: always"></div>
 
 ## Controle de Versão
 
