@@ -198,10 +198,7 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 ......  COLOQUE AQUI O SEU TEXTO DE INTRODUÇÃO ......
 
-<div style="page-break-before: always"></div>
-
 ## User Flow
-
 ```mermaid
 graph TD
 
