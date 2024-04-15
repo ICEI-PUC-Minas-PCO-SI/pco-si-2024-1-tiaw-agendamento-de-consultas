@@ -13,7 +13,7 @@
 > Os membros do grupo são:
 >
 > - Christian Sena Gomes
-> - Felipe dos Santos Resende
+> - Talles Felipe dos Santos Resende
 > - João Pedro Rafael Santos Silva
 > - Kayque dos Santos Almeida
 > - Yuri Zocoli Silva
