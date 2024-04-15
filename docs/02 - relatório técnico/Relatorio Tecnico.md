@@ -163,6 +163,8 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 |Marcelo Ferraz      | Marcar consultas em horário e dia especifico   | Para se adequar à minha rotina                                   |
 |Marcelo Ferraz      | Escolher um médico de preferência              | Para ser atendido por um médico que me recomendaram ou conhecido |
 |Pedro               | Confirmação de dados durante o agendamento     | Para evitar a entrada de dados incorretos                        |
+|Josefa               | Visualização dos agendamentos do dia     | Para planejar as consultas     |
+|Josefa               | Visualização das confirmações    | Para organizar a genda |
 
 <div style="page-break-before: always"></div>
 
