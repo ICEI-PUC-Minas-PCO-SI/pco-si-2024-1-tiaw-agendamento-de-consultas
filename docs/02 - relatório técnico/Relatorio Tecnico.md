@@ -212,8 +212,12 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 |ID| Restrição                                             |
 |--|-------------------------------------------------------|
-|01| O projeto deverá ser entregue até o final do semestre |
-|02| Não pode ser desenvolvido um módulo de backend        |
+|01| Não pode ser desenvolvido um módulo de backend        |
+|02| O projeto deverá ser entregue no final do semestre letivo, não podendo extrapolar a data de *Julho de 2024.*  |
+|03| Todos da equipe devem desenvolver uma funcionalidade de ponta a ponta  |
+|04| Não podem ser subcontratados desenvolvedores  |
+|05| Não pode ser ultilizado nenhumn frameworrk de frontend |
+|06| Devem ser utilizadas apenas as linguagens de marcação, estilização e programação HTML, CSS e JavaScript |
 
 
 <div style="page-break-before: always"></div>
