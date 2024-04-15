@@ -146,7 +146,11 @@ A aplicação busca gerenciar agendamentos para que não haja sobreposição de 
 
 ### **Marina**
   ![Exemplo de Persona](imaages/../images/persona3.png)
-### **Josefa**
+
+---
+<div style="page-break-before: always"></div>
+  
+  ### **Josefa**
   ![Exemplo de Persona](imaages/../images/persona4.png)
 
 <div style="page-break-before: always"></div>
