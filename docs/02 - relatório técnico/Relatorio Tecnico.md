@@ -172,15 +172,39 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
-|RF-001| Permitir que o usuário cadastre tarefas | ALTA |
-|RF-002| Emitir um relatório de tarefas no mês   | MÉDIA |
+|RF-001| Permitir que o usuário faça login | ALTA |
+|RF-002| Permitir que o usuário faça cadastro | ALTA |
+|RF-003| Permitir que o usuário visualize o cadastro | ALTA |
+|RF-004| Permitir que o usuário valide os dados | ALTA |
+|RF-005| Permitir que o usuário edite os dados | ALTA |
+|RF-006| Permitir que o usuário selecione o tipo de atendimento | ALTA |
+|RF-007| Permitir que o usuário  envie carteira do convenio | ALTA |
+|RF-008| Permitir que o usuário  envie pedido médico | ALTA |
+|RF-009| Permitir que o usuário selecione o tipo de atendimento | BAIXA |
+|RF-010| Permitir que o usuário selecione a especialidade | MÉDIA |
+|RF-011| Permitir que o usuário selecione a clinica de preferência | ALTA |
+|RF-012| Permitir que o usuário selecione a profissional de preferência | MÉDIA |
+|RF-013| Permitir que o usuário selecione uma data | ALTA |
+|RF-014| Permitir que o usuário selecione um horário | ALTA |
+|RF-015| Permitir que o usuário selecione avalie o atendimento | BAIXA |
+|RF-016| Permitir que o usuário administrador selecione uma data para atendimento| BAIXA |
+|RF-017| Permitir que o usuário administrador selecione um horário para dar inicio ao atendimento| BAIXA |
+|RF-018| Permitir que o usuário administrador finalize o atendimento| BAIXA |
+|RF-019| Permitir que o usuário administrador selecione e visualize os arquivos do paciente | BAIXA |
+
 
 ### Requisitos não Funcionais
 
 |ID     | Descrição do Requisito  |Prioridade |
 |-------|-------------------------|----|
-|RNF-001| O sistema deve ser responsivo para rodar em um dispositivos móvel | MÉDIA |
-|RNF-002| Deve processar requisições do usuário em no máximo 3s |  BAIXA |
+|RNF-001| O sistema deve ser responsivo para rodar em um dispositivos móvel  | MÉDIA |
+|RNF-002| O sistema deve ser hospedado no github pages | MÉDIA |
+|RNF-003| O sistema deve funcionar também como PWA | BAIXA |
+|RNF-004| O sistema deve garantir a segurança dos dados através de criptografia SSL/TLS | ALTA |
+|RNF-005| O sistema deve ter um tempo de resposta inferior a 2 segundos para qualquer transação | ALTA |
+|RNF-006| O sistema deve suportar pelo menos 1000 usuários simultâneos sem degradação de desempenho | ALTA |
+
+
 
 ## Restrições
 
@@ -196,7 +220,8 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 # Projeto de Interface
 
-......  COLOQUE AQUI O SEU TEXTO DE INTRODUÇÃO ......
+
+O projeto de interface do sistema de agendamento de consultas médicas foi cuidadosamente desenvolvido para oferecer uma experiência de usuário intuitiva e acessível. Priorizamos uma navegação clara e simples, com menus bem organizados e botões de ação evidentes, garantindo que usuários de todas as idades e habilidades tecnológicas possam utilizar o sistema sem dificuldades. A interface é responsiva, adaptando-se perfeitamente a diferentes dispositivos e tamanhos de tela, o que é essencial para garantir o acesso universal. Além disso, utilizamos cores suaves e ícones explicativos para facilitar a identificação rápida das funções disponíveis, como agendar, reagendar ou cancelar consultas, contribuindo para uma gestão eficiente do tempo tanto dos pacientes quanto dos profissionais de saúde.
 
 ## User Flow
 ```mermaid
@@ -388,7 +413,7 @@ Todos: BrainStorm
 |Processo de Design Thinkgin  | Miro |  <https://miro.com/app/board/uXjVNjO9Ezo=/> |
 |Repositório de código | GitHub | <https://github.com/ICEI-PUC-Minas-PCO-SI/pco-si-2024-1-tiaw-agendamento-de-consultas> |
 |Hospedagem do site | Heroku |  <https://XXXXXXX.herokuapp.com> |
-|Protótipo Interativo | MavelApp ou Figma | <https://figma.com/XXXXXXX> |
+|Protótipo Interativo |  Figma | [Figma](https://www.figma.com/proto/FTo5F6hFRDaLCtbXbtlQYt/Untitled?type=design&node-id=1-2&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=1%3A2&show-proto-sidebar=1>) |
 
 
 <div style="page-break-before: always"></div>
