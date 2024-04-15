@@ -150,7 +150,7 @@ A aplicação busca gerenciar agendamentos para que não haja sobreposição de 
 ---
 <div style="page-break-before: always"></div>
   
-  ### **Josefa**
+### **Josefa**
   ![Exemplo de Persona](imaages/../images/persona4.png)
 
 <div style="page-break-before: always"></div>
