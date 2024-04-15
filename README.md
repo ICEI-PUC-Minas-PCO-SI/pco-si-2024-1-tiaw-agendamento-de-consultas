@@ -8,7 +8,7 @@ para evitar filas de esperas cansativas e agilizar o processo de atendimento e t
 ## Alunos integrantes da equipe
 
 * Christian Sena Gomes
-* Felipe dos Santos Resende
+* Talles Felipe dos Santos Resende
 * João Pedro Rafael Santos Silva
 * Kayque dos Santos Almeida
 * Yuri Zocoli Silva
