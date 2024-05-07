@@ -1,0 +1,22 @@
+.btn-primary {
+    background-color: #7240ff;
+}
+
+.btn-primary:hover{
+    background-color: #5621ea;
+
+}
+
+.vertical-center {
+    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh; /* These two lines are counted as one :-)       */
+  
+    display: flex;
+    align-items: center;
+}
+
+
+.h1 {
+    font-weight: bolder;
+    font-size: 40;
+}
