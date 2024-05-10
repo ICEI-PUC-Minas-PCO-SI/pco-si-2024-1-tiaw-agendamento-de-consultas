@@ -17,7 +17,13 @@
     
     <!--Link CSS-->
 
-    <link rel="stylesheet" href="voting.css">
+    <link rel="stylesheet" href="rating.css">
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
 
 
 </head>
@@ -39,16 +45,16 @@
                 
                 <div id="votacao" class="row">
                     <div id="stars-rating" class="col-12 d-flex justify-content-center mb-4 mt-2 flex-row-reverse">
-                        <input type="radio" onclick="clickstar()" name="star" value="5" id="star-5">
-                        <label for="star-5" class="material-symbols-outlined fs-2">star</label>
-                        <input type="radio" onclick="clickstar()" name="star" value="4" id="star-4">
-                        <label for="star-4" class="material-symbols-outlined fs-2">star</label>
-                        <input type="radio" onclick="clickstar()" name="star" value="3" id="star-3">
-                        <label for="star-3" class="material-symbols-outlined fs-2">star</label>
-                        <input type="radio" onclick="clickstar()" name="star" value="2" id="star-2">
-                        <label for="star-2" class="material-symbols-outlined fs-2">star</label>
-                        <input type="radio" onclick="clickstar()" name="star" value="1" id="star-1">
-                        <label for="star-1" class="material-symbols-outlined fs-2">star</label>
+                        <input type="radio" name="star" id="star-5">
+                        <label for="star-5" value="5" class="material-symbols-outlined fs-2">star</label>
+                        <input type="radio" name="star" id="star-4">
+                        <label for="star-4" value="4" class="material-symbols-outlined fs-2">star</label>
+                        <input type="radio" name="star" id="star-3">
+                        <label for="star-3" value="3" class="material-symbols-outlined fs-2">star</label>
+                        <input type="radio" name="star" id="star-2">
+                        <label for="star-2" value="2" class="material-symbols-outlined fs-2">star</label>
+                        <input type="radio" name="star" id="star-1">
+                        <label for="star-1" value="1" class="material-symbols-outlined fs-2">star</label>
                     </div>
                 </div>
 
@@ -69,7 +75,7 @@
     
     
     
-    <script src="voting.js"></script>
+    <script src="rating.js" type="module"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
