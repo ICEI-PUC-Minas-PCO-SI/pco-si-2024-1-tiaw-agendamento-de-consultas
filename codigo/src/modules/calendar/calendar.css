@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+
+}
+
+#more {
+    color: rgb(153, 153, 153);
+    border: 3px solid;
+    border-color: rgb(153, 153, 153);
+    padding: 5px 3px 3px;
+    transition: 0.1s all ease;
+}
+
+#more:hover {
+    color: black;
+    border: 3px solid;
+    border-color: black;
+
+}
+
+#container-month {
+    box-shadow: 3px 3px 7px #5621ea;
+    padding: 30px;
+}
+
+#month span input{
+    color: #7240ff;
+    font-weight: bolder;
+    letter-spacing: 1.2px;
+    padding: 5px 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 0px 0 10px;
+    background-color: transparent;
+}
+
+#days-week {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+    user-select: none;
+    padding: 0;
+}
+
+#number-days {
+    padding: 0;
+}
+
+#number-days input {
+    display: none;
+}
+
+#number-days label {
+    font-size: 18px;
+    display: inline-block;
+    width: 14.2%;
+    margin: 8px 0;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.1s ease all;
+}
+
+#number-days input:not(:checked) ~ label:hover {
+    color: #7240ff;
+    font-weight: bold;
+}
+
+#number-days input:checked ~ label {
+    color: #7240ff;
+}
+
+#days-hours input {
+    display: none;
+}
+
+#avancar {
+    background-color:#7240ff;
+    color: white;
+    padding: 3px 0;
+    border: none;
+    user-select: none;
+    transition: 0.2s ease all;
+}
+
+.hour{
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #5621ea;
+    color: white;
+    text-align: center;
+}
+
+.selected{
+    background-color: #5621ea !important;
+    color: white !important;
+}
+
+#avancar:hover {
+    background-color: #5621ea;
+}
