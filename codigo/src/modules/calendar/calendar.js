@@ -38,13 +38,19 @@ function setDate(day){
     hourElements.forEach(element =>{
         element.remove()
     })
-    document.getElementsByClassName('selected')[0]?.setAttribute('class', '')
+    selectedDay = document.getElementsByClassName('selected')[0]?.setAttribute('class', '')
+    selectedDay = document.getElementsByClassName('selectedButton')[0]?.setAttribute('class', '')
     date.setHours(0)
     document.getElementById('day'+day).setAttribute('class', 'selected')
     for(i = 8; i<=21; i++){
         let elem = document.createElement("button")
-        elem.setAttribute("class", "hour")
+        elem.setAttribute("id", "hour"+i)
         elem.setAttribute("onclick", "setHour("+i+")")
+        elem.style.padding = "5px"
+        elem.style.backgroundColor = "#5621ea"
+        elem.style.borderRadius = "5px"
+        elem.style.color = "white"
+        elem.style.textAlign = "center"
         elem.textContent = i+':00'
         hoursElement.insertAdjacentElement('beforeend', elem)
         hourElements.push(elem);
@@ -54,4 +60,7 @@ function setDate(day){
 function setHour(hour){
     date.setHours(hour)
     console.log(date)
+    document.getElementsByClassName('selectedButton')[0]?.setAttribute('class', '')
+    document.getElementById('hour'+hour).setAttribute('class', 'selectedButton')
+    console.log(document.getElementById('hour'+hour).getAttribute("class"))
 }

@@ -40,18 +40,6 @@ body {
     background-color: transparent;
 }
 
-#days-week {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    color: black;
-    font-weight: bold;
-    font-size: 15px;
-    user-select: none;
-    padding: 0;
-}
-
 #number-days {
     padding: 0;
 }
@@ -93,17 +81,15 @@ body {
     transition: 0.2s ease all;
 }
 
-.hour{
-    padding: 5px;
-    border-radius: 5px;
-    background-color: #5621ea;
-    color: white;
-    text-align: center;
-}
-
 .selected{
     background-color: #5621ea !important;
     color: white !important;
+}
+
+.selectedButton{
+    background-color: #82ea21 !important;
+    color: black !important;
+    font-weight: bold !important;
 }
 
 #avancar:hover {
