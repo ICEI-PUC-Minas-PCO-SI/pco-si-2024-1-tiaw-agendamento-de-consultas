@@ -20,14 +20,14 @@
 </head>
 <body class="bg-body-secondary mt-5">
     <div class="container">
-        <div class="row mb-3">
+        <div class="row mb-5">
             <div class="col d-flex justify-content-center">
                 <h3>AGENDAR UMA CONSULTA</h3>
             </div>
         </div>
 
         <!--Inicio - Calendario-->
-        <div id="container-month">
+        <div class="p-4 m-auto" id="container-month">
             <div class="row justify-content-between">
                 <div class="col p-0 d-grid justify-content-center"><span class="fw-bold fs-15 p-0">Dom</span></div>
                 <div class="col p-0 d-grid justify-content-center"><span class="fw-bold fs-15 p-0">Seg</span></div>
@@ -39,21 +39,21 @@
             </div>
 
             <div class="row">
-                <div class="col" id="number-days">
-                    <input type="radio" name="days" id="day">
+                <div class="col p-0" id="number-days">
+                    <input class="d-none" type="radio" name="days" id="day">
                 </div>
             </div>
         </div>
         <!--Fim - Calendario-->
 
         <!--Seleção de Hora-->
-        <div class="col row row-cols-4 m-4" id="days-hours">
-            <input type="radio" name ="hours" id="hour">
+        <div class="col row row-cols-4 p-4 m-auto" id="days-hours">
+            <input class="d-none" type="radio" name ="hours" id="hour">
         </div>
 
-        <div class="row mt-5">
+        <div class="row">
             <div class="col d-flex justify-content-center">
-                <button type="button" id="avancar" onclick="scheduleAppointment()" class="button w-100">Avançar</button>
+                <button type="button" id="advance" onclick="scheduleAppointment()" class="button w-100 text-white p-1 border-0">Avançar</button>
             </div>
         </div>
 
