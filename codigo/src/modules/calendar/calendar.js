@@ -8,13 +8,13 @@ var hourElements = []
 createCalendarDays();
 
 function createCalendarDays(){
-    //cria datas vazias no começo do mes
+    //cria datas vazias no comeco do mes
     let firstMonthWeakDay = new Date(now.getFullYear(), now.getMonth(), 1).getDay()
-    let counter = 7
+    let counter = 7 // 7, valor de domingo no Date.getDay()
     while(counter != firstMonthWeakDay){
         daysElement.innerHTML += '<label></label>';
         counter++
-        if(counter >= 8){
+        if(counter > 7){ //se depois de domingo retornar para sagunda
             counter = 1;
         }
     }
@@ -28,11 +28,16 @@ function createCalendarDays(){
         elem.textContent = i
         elem.style.textAlign = "center"
         daysElement.insertAdjacentElement('beforeend', elem)
-        //daysElement.innerHTML += '<label id=\'day'+i+'\' onclick=\'setDate('+i+')\'>'+i+'</label>';
     }
 }
 
 function setDate(day){
+    if(date.getHours() > 1){
+        var userResponse = confirm("Ao alterar a data, seleção do horario será desfeita. Deseja alterar a data?");
+        if(!userResponse){
+            return
+        }
+    }
     date = new Date(now.getFullYear(), now.getMonth(), day)
     hourElements.forEach(element =>{
         element.remove()
@@ -69,6 +74,10 @@ function scheduleAppointment(){
     }
     if(date.getHours() <= 7){
         alert("Nenhum horario selecionado. Favor selecionar um horario para a consulta.")
+        return
+    }
+    if(date.getTime() < now.getTime()){
+        alert("Data selecionada anterior a data atual. Favor selecionar uma data após a data atual.")
         return
     }
     let schedule = {}
