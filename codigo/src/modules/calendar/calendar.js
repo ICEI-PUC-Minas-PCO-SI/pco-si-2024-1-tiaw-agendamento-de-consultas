@@ -2,7 +2,7 @@ let daysElement = document.querySelector('#number-days');
 let hoursElement = document.querySelector('#days-hours');
 
 var now = new Date()
-var date = new Date()
+var date = new Date(2000, 1, 1, 0)
 var hourElements = []
 
 createCalendarDays();
@@ -34,7 +34,6 @@ function createCalendarDays(){
 
 function setDate(day){
     date = new Date(now.getFullYear(), now.getMonth(), day)
-    console.log(date);
     hourElements.forEach(element =>{
         element.remove()
     })
@@ -59,8 +58,44 @@ function setDate(day){
 
 function setHour(hour){
     date.setHours(hour)
-    console.log(date)
     document.getElementsByClassName('selectedButton')[0]?.setAttribute('class', '')
     document.getElementById('hour'+hour).setAttribute('class', 'selectedButton')
-    console.log(document.getElementById('hour'+hour).getAttribute("class"))
+}
+
+function scheduleAppointment(){
+    if(date.getFullYear() < now.getFullYear()){
+        alert("Nenhuma data selecionada. Favor selecionar uma data para a consulta.")
+        return
+    }
+    if(date.getHours() <= 7){
+        alert("Nenhum horario selecionado. Favor selecionar um horario para a consulta.")
+        return
+    }
+    let schedule = {}
+    schedule.date = date
+    schedule.paciente = '1'
+    schedule.profissional = '2'
+    let storage = JSON.parse(localStorage.getItem("schedule"))
+    if(storage == null){
+        localStorage.setItem("schedule", JSON.stringify([schedule]))
+        alert("Consulta agendada com sucesso!")
+    }else{
+        if(canSchedule(storage, schedule) == 0){
+            storage.push(schedule)
+            localStorage.setItem("schedule", JSON.stringify(storage))
+            alert("Consulta agendada com sucesso!")
+        }else{
+            alert("Horario de "+date.getHours()+"h indisponivel para o dia "+date.getDate()+". Favor selecionar um outro horario.")
+        }
+    }
+}
+
+function canSchedule(storage, schedule) {
+    let profissionalSchedule = storage.filter((element) => element.profissional == schedule.profissional)
+    let alreadyScheduled = profissionalSchedule.find((element) => {
+        let date1 = new Date(element.date).getTime()
+        let date2 = new Date(schedule.date).getTime()
+        return date1 == date2
+    })
+    return alreadyScheduled ? 1 : 0
 }
