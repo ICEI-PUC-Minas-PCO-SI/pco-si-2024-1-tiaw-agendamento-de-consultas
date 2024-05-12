@@ -1,5 +1,33 @@
-import { Auth } from "/codigo/src/core/auth.js";
+export class LoginController {
 
+    constructor() {
+      this._firebaseConfig = {
+        apiKey: "AIzaSyC950Slq6RoGWoXUA4WU6O4iuQdzX_k-qQ",
+        authDomain: "agendai-84d84.firebaseapp.com",
+        projectId: "agendai-84d84",
+        storageBucket: "agendai-84d84.appspot.com",
+        messagingSenderId: "346989741208",
+        appId: "1:346989741208:web:4838f4fc5cc1d1a36abced",
+        measurementId: "G-RET5W0Q8SL"
+      };
+    }
+  
+    login = async (email, password) => {
+      try {
+        if(firebase.apps.length == 0){
+
+            await firebase.initializeApp(this._firebaseConfig);
+        }
+        const result = await firebase.auth().signInWithEmailAndPassword(email, password);
+        return result;
+      } catch (e) {
+        console.log(e);
+        return null;
+      }
+    }
+    
+  }
+  
 
 document.getElementById("loginbutton").addEventListener("click", async function (event) {
     event.preventDefault();
@@ -17,7 +45,7 @@ document.getElementById("loginbutton").addEventListener("click", async function 
         return;
     }
 
-    const agendai = new Auth();
+    const agendai = new LoginController();
     const credential = await agendai.login(email, password);
     if(credential == null){
         alert.innerText = "Login inválido";
@@ -29,4 +57,3 @@ document.getElementById("loginbutton").addEventListener("click", async function 
     localStorage.setItem("credential", credential);
     window.location.replace("/codigo/src/modules/welcome");
 });
-
