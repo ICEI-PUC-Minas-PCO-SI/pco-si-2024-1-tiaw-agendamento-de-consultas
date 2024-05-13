@@ -1,4 +1,4 @@
-import {Rating} from '/codigo/src/core/rating.js'
+// import {Rating} from '/codigo/src/core/rating.js'
 
 const btn = document.querySelector("button", "#finalizar");
 const avaliation = document.querySelector('#avaliacao');
@@ -7,22 +7,28 @@ const question = document.querySelector('#pergunta');
 const voting = document.querySelector('#votacao');
 const thanks = document.querySelector('#thanks');
 
-function starValue() {
+//Função responsável por caputurar o valor da estrela votada:
+function starvalue() {
+    const value = document.getElementsByName('star');
+
+    for (var i = 0; i < value.length; i++) {
+        if(value[i].checked) {
+            console.log(value[i].value)
+        }
+    }
 }
 
 btn.onclick =  () => {
-    
-    question.style.display = 'none';
-    voting.style.display = 'none';
-    btn.style.display = 'none';
-    avaliation.style.display = 'none'
-    thanks.style.display = 'block';
+
+    avaliation.style.display = 'none' // Torna o card das avaliações invisível
+    thanks.style.display = 'block'; // Mostra o card de agradescimento por usar a plataforma
 
 
-    /*setTimeout (() => {
-        location.reload(); // Aqui o programa retornaria à página inicial após alguns segundos
-    }, 2000)*/
+
+
+    setTimeout (() => {
+        location.reload();
+    }, 2000) // Aqui será feita uma realocação para a página inicial da aplicação após alguns segundos
 };
 
-// apos clicar no botão levar tudo ao firebase.
-
+// Após clicar no botão será feito um link com o firebase para armazenar os dados da avaliação.
