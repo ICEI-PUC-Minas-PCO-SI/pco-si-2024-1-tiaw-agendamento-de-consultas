@@ -1,34 +1,44 @@
 let daysElement = document.querySelector('#number-days');
 let hoursElement = document.querySelector('#days-hours');
+let dateDisplay = document.getElementById('date-display')
 
 var now = new Date()
 var date = new Date(2000, 1, 1, 0)
 var hourElements = []
 
-createCalendarDays();
+dateDisplay.innerHTML = (now.getMonth()+1)+", "+now.getFullYear()
+createCalendarDays(now);
 
 function createCalendarDays(){
     //cria datas vazias no comeco do mes
-    let firstMonthWeakDay = new Date(now.getFullYear(), now.getMonth(), 1).getDay()
-    let counter = 7 // 7, valor de domingo no Date.getDay()
-    while(counter != firstMonthWeakDay){
-        daysElement.innerHTML += '<label></label>';
+    let monthFirstWeakDay = new Date(now.getFullYear(), now.getMonth(), 1).getDay()
+    let counter = 0 // 0, valor de domingo no Date.getDay()
+    while(counter != monthFirstWeakDay){
+        daysElement.innerHTML += '<label class=\'day\'></label>';
         counter++
-        if(counter > 7){ //se depois de domingo retornar para sagunda
-            counter = 1;
+        if(counter > 6){ //se depois de sabado retornar para domingo
+            counter = 0;
         }
     }
     
     //cria datas preenchidas do mes
-    let monthDays = new Date(now.getFullYear(), now.getMonth(), 0).getDate()
+    let monthDays = new Date(now.getFullYear(), now.getMonth()+1, 0).getDate()
     for(i = 1; i <= monthDays; i++) {
         let elem = document.createElement("label")
         elem.setAttribute("id", "day"+i)
+        elem.setAttribute("class", "day")
         elem.setAttribute("onclick", "setDate("+i+")")
         elem.textContent = i
         elem.style.textAlign = "center"
         daysElement.insertAdjacentElement('beforeend', elem)
     }
+}
+function clearCalendarDays(){
+    let elementsToRemove = document.getElementsByClassName("day")
+    for (let i = (elementsToRemove.length-1); i >= 0; i--) {
+        elementsToRemove[i].remove();
+    }
+    document.getElementsByClassName("selected")[0]?.remove()
 }
 
 function setDate(day){
@@ -39,13 +49,21 @@ function setDate(day){
         }
     }
     date = new Date(now.getFullYear(), now.getMonth(), day)
+    document.getElementsByClassName('selected')[0]?.setAttribute('class', '')
+    document.getElementsByClassName('selectedButton')[0]?.setAttribute('class', '')
+    date.setHours(0)
+    document.getElementById('day'+day).setAttribute('class', 'selected')
+    clearHours()
+    createHours()
+}
+
+function clearHours(){
     hourElements.forEach(element =>{
         element.remove()
     })
-    selectedDay = document.getElementsByClassName('selected')[0]?.setAttribute('class', '')
-    selectedDay = document.getElementsByClassName('selectedButton')[0]?.setAttribute('class', '')
-    date.setHours(0)
-    document.getElementById('day'+day).setAttribute('class', 'selected')
+}
+
+function createHours(){
     for(i = 8; i<=21; i++){
         let elem = document.createElement("button")
         elem.setAttribute("id", "hour"+i)
@@ -107,4 +125,24 @@ function canSchedule(storage, schedule) {
         return date1 == date2
     })
     return alreadyScheduled ? 1 : 0
+}
+
+function changeMonth(number){
+    if(date.getFullYear() != 2000){
+        var userResponse = confirm("Ao alterar a data, seleção atual será desfeita. Deseja alterar a data?");
+        if(!userResponse){
+            return
+        }
+    }
+    now.addMonths(number)
+    date = new Date(2000, 1, 1, 0)
+    clearHours()
+    clearCalendarDays()
+    createCalendarDays(now)
+    dateDisplay.innerHTML = (now.getMonth()+1)+", "+now.getFullYear()
+}
+
+Date.prototype.addMonths = function(months) {
+    this.setMonth(this.getMonth() + months);
+    this.setDate(1);
 }
