@@ -18,17 +18,6 @@ body {
     max-width: 540px;
 }
 
-#number-days label {
-    font-size: 18px;
-    display: inline-block;
-    width: 14.2%;
-    margin: 8px 0;
-    font-weight: bold;
-    cursor: pointer;
-    user-select: none;
-    transition: 0.1s ease all;
-}
-
 #advance {
     background-color:#7240ff;
     user-select: none;

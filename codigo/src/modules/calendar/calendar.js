@@ -14,7 +14,13 @@ function createCalendarDays(){
     let monthFirstWeakDay = new Date(now.getFullYear(), now.getMonth(), 1).getDay()
     let counter = 0 // 0, valor de domingo no Date.getDay()
     while(counter != monthFirstWeakDay){
-        daysElement.innerHTML += '<label class=\'day\'></label>';
+        let elem = document.createElement("label")
+        elem.setAttribute("class", "day")
+        elem.style.display = "inline-block"
+        elem.style.width = "14.2%"
+        elem.style.margin = "8px 0"
+        daysElement.insertAdjacentElement('beforeend', elem)
+        //daysElement.innerHTML += '<label class=\'day\'></label>';
         counter++
         if(counter > 6){ //se depois de sabado retornar para domingo
             counter = 0;
@@ -28,8 +34,16 @@ function createCalendarDays(){
         elem.setAttribute("id", "day"+i)
         elem.setAttribute("class", "day")
         elem.setAttribute("onclick", "setDate("+i+")")
-        elem.textContent = i
+        elem.style.fontSize = "18px"
         elem.style.textAlign = "center"
+        elem.style.display = "inline-block"
+        elem.style.width = "14.2%"
+        elem.style.margin = "8px 0"
+        elem.style.fontWeight = "bold"
+        elem.style.cursor = "pointer"
+        elem.style.userSelect = "none"
+        elem.style.transition = "0.3s ease all"
+        elem.textContent = i
         daysElement.insertAdjacentElement('beforeend', elem)
     }
 }
