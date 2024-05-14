@@ -75,6 +75,13 @@ document.getElementById("signinbutton").addEventListener("click", async function
         return;
     }
 
+    if(senha.value.trim().length <= 6 ){
+        alert.innerText = "Senha muito curta!";
+        alert.hidden = false;
+        senha.required = true;
+        return;
+    }
+
     if (senha.value.trim() != confirmsenha.value.trim()) {
         alert.innerText = "As senhas não coincidem!";
         confirmsenha.style.borderColor = "red";
