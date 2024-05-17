@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    width: 70%;
+    height: auto;
+    margin: 30vh auto;
+}
+
+#avaliacao {
+    display: block;
+}
+
+#title {
+    user-select: none;
+    font-size: 15px;
+    word-spacing: 0.5px;
+}
+
+
+#stars {
+    cursor: pointer;
+}
+
+#question {
+    display: block;
+}
+#voting {
+    display: block;
+}
+
+input {
+    display: none;
+}
+
+label {
+    user-select: none;
+    cursor: pointer;
+}
+
+input:not(:checked) ~ label:hover,
+input:not(:checked) ~ label:hover ~ label{
+    color: rgb(228, 190, 24);
+}
+
+input:checked ~ label {
+    color: rgb(228, 190, 24);
+}
+
+input#star-5:checked ~ label {
+    color: rgb(207, 173, 22);
+    text-shadow: 0px 0px 10px yellow;
+}
+input#star-4:checked ~ label {
+    color: rgb(216, 180, 22);
+    text-shadow: 0px 0px 8px yellow;
+}
+input#star-3:checked ~ label {
+    color: rgb(230, 191, 20);
+    text-shadow: 0px 0px 6px yellow;
+}
+input#star-2:checked ~ label {
+    color: rgb(235, 195, 21);
+    text-shadow: 0px 0px 4px yellow;
+}
+input#star-1:checked ~ label {
+    color: rgb(245, 202, 13);
+    text-shadow: 0px 0px 2px yellow;
+}
+
+#finalizar {
+    display: block;
+    background-color: #7240ff;
+    color: white;
+    text-shadow: 2px 2px 1px black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease all;
+}
+#finalizar:hover {
+    background-color: #5621ea;
+}
+
+#thanks {
+    display: none;
+    font-weight: bold;
+}
+
+@media screen and (min-width: 769px){
+    body {
+        width: 50%;
+        height: auto;
+        margin: 40vh auto;
+    }
+    
+    .card {
+        width: 350px;
+    }
+
+    #title {
+        font-size: 20px;
+    }
+}

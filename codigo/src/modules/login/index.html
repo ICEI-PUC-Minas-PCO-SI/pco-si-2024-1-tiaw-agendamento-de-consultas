@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script defer xxsrc="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
+
+    
+    <link rel="stylesheet" href="./login.css">
+    
+    <title>Agendaí</title>
+</head>
+
+<body onload="document.loginform.email.focus()" class="container vertical-center">
+    <div class="container">
+        <h1 class="h1 text-center mb-5  ">IDENTIFIQUE-SE</h1>
+        <div class="row justify-content-center">
+            <form class="col col-lg-4 " id="loginform" name="loginform" action="#">
+                <div class="col mb-3">
+                    <label for="login-input-email" class="form-label">Login (e-mail)</label>
+                    <input type="email" class="form-control" id="login-input-email" name="email">
+                </div>
+                <div class=" col mb-3">
+                    <label for="login-input-password" class="form-label">Senha</label>
+                    <input type="password" class="form-control" id="login-input-password">
+                </div>
+    
+                <div id="erroralert" class="row alert alert-danger" role="alert" hidden >
+                    Email ou senha inválidos!
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col col-lg-6">
+                        <button class="w-100 btn btn-primary " type="submit" id="loginbutton">AVANÇAR</button>
+                    </div>
+                </div>
+    
+            </form>
+        </div>
+    </div>
+
+
+    <script src="./login.js" type="module"></script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votation Page</title>
+
+    <!--Link do bootstrap-->
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <!--Link dos icones-->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    
+    <!--Link para estilização com CSS-->
+
+    <link rel="stylesheet" href="rating.css">
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
+
+
+</head>
+
+<body class="bg-body-secondary">
+
+    <!-- Card para a avaliação -->
+    <section id="avaliation" class="container d-flex justify-content-center">
+        <div class="card bg-transparent border-3">
+            <div class="card-body" id="avaliacao">
+                <div id="pergunta" class="row">
+                    <div class="col d-flex justify-content-center align-items-center"> <!--Pergunta feita para a avaliação do cliente-->
+                        <p id="title">Como foi sua experiência?</p>
+                    </div>
+                </div>
+                
+                <!--Estrelas de 1 a 5 para a avaliação-->
+                <div id="votacao" class="row">
+                    <div id="stars-rating" class="col-12 d-flex justify-content-center mb-4 mt-2 flex-row-reverse">
+                        <input onchange="starvalue()" type="radio" name="star" value="5" id="star-5">
+                        <label for="star-5" class="material-symbols-outlined fs-2">star</label>
+                        <input onchange="starvalue()" type="radio" name="star" value="4" id="star-4">
+                        <label for="star-4" class="material-symbols-outlined fs-2">star</label>
+                        <input onchange="starvalue()" type="radio" name="star" value="3" id="star-3">
+                        <label for="star-3" class="material-symbols-outlined fs-2">star</label>
+                        <input onchange="starvalue()" type="radio" name="star" value="2" id="star-2">
+                        <label for="star-2" class="material-symbols-outlined fs-2">star</label>
+                        <input onchange="starvalue()" type="radio" name="star" value="1" id="star-1">
+                        <label for="star-1" class="material-symbols-outlined fs-2">star</label>
+                    </div>
+                </div>
+
+                <!--Botão responsável por finalizar e encaminhar a voitação-->
+                <div class="row d-flex justify-content-center">
+                    <button id="finalizar" onclick="end()" type="button" class="btn btn-sm col-md-5 col-8">Finalizar</button>
+                </div>
+            </div>
+
+            <!--Mensagem que aparece por alguns segundos após a finalização da votação-->
+            <div class="card-body">
+                <div class="row" id="thanks">
+                    <div class="col d-flex flex-wrap justify-content-center">
+                        <p>Obrigado por usar nossa plataforma!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    
+    <script src="rating.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</html>
