@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+
+}
+
+#container-month {
+    box-shadow: 3px 3px 7px black;
+    max-width: 540px;
+}
+
+#days-hours{
+    max-width: 540px;
+}
+
+#advance {
+    background-color:#7240ff;
+    user-select: none;
+    transition: 0.2s ease all;
+    max-width: 540px;
+}
+
+.selected{
+    background-color: #5621ea !important;
+    color: white !important;
+}
+
+.selectedButton{
+    background-color: #82ea21 !important;
+    color: black !important;
+    font-weight: bold !important;
+}
+
+#advance:hover {
+    background-color: #5621ea;
+}
