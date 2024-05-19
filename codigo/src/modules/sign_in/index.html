@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script defer xxsrc="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./sign_in.css">
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
+
+    <title>Agendaí</title>
+    <script>
+        function formatar(mascara, documento) {
+            let i = documento.value.length;
+            let saida = '#';
+            let texto = mascara.substring(i);
+            while (texto.substring(0, 1) != saida && texto.length) {
+                documento.value += texto.substring(0, 1);
+                i++;
+                texto = mascara.substring(i);
+            }
+        }
+    </script>
+</head>
+
+
+<body>
+
+    <body onload="document.loginform.nome.focus()" class="container vertical-center">
+        <div class="container">
+            <h1 class="h1 text-center mb-5  ">DADOS PESSOAIS</h1>
+            <div class="row justify-content-center">
+                <form class="col col-lg-4 mb-5 " id="loginform" name="loginform" action="#" onsubmit="return validateForm()" method="post">
+                    <div class="col mb-3">
+                        <label for="signin-input-nome" class="form-label">Nome *</label>
+                        <input type="text" class="form-control" id="signin-input-nome" name="nome" />
+                    </div>
+                    <div class="col mb-3">
+                        <label for="signin-input-sobrenome" class="form-label">Sobrenome *</label>
+                        <input type="text" class="form-control" id="signin-input-sobrenome" name="sobrenome" />
+                    </div>
+                    <div class="col mb-3">
+                        <label for="signin-input-email" class="form-label">Email *</label>
+                        <input type="text" class="form-control" id="signin-input-email" name="email" />
+                    </div>
+                    <div class="col mb-3">
+                        <label for="signin-input-senha" class="form-label">Crie uma senha *</label>
+                        <input type="password" class="form-control" id="signin-input-senha" name="senha" />
+                    </div>
+                    <div class="col mb-3">
+                        <label for="signin-input-confirmsenha" class="form-label">Confirme a senha *</label>
+                        <input type="password" class="form-control" id="signin-input-confirmsenha" name="confirmsenha" />
+                    </div>
+                    <div class="col mb-3">
+                        <label for="signin-input-telefone" class="form-label">Telefone *</label>
+                        <input type="tel" class="form-control" id="signin-input-telefone" name="telefone" maxlength="15" OnKeyPress="formatar('(##) ####-#####',this)" />
+                    </div>
+                    <div class="col mb-3">
+                        <label for="signin-input-documento" class="form-label">Documento *</label>
+                        <input type="text" inputmode="numeric" class="form-control" id="signin-input-documento" maxlength="14" name="documento" OnKeyPress="formatar('###.###.###-##',this)" />
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col mb-3 col-7">
+                            <label for="signin-input-address-street" class="form-label">Endereço *</label>
+                            <input type="text" class="form-control" id="signin-input-address-street" name="address-street" />
+                        </div>
+                        <div class="col mb-3 col-4">
+                            <label for="signin-input-address-number" class="form-label">Número *</label>
+                            <input type="text" inputmode="numeric" class="form-control" pattern="[0-9]+" id="signin-input-address-number" name="address-number" />
+                        </div>
+                    </div>
+                    <div class="col mb-3">
+                        <label for="signin-input-complemento" class="form-label">Complemento</label>
+                        <input type="text" class="form-control" id="signin-input-complemento" name="complemento" />
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class=" mb-3 col-6">
+                            <label for="signin-input-address-cidade" class="form-label">Cidade *</label>
+                            <input type="text" class="form-control" id="signin-input-address-cidade" name="address-cidade" />
+                        </div>
+                        <div class=" mb-3 col-5">
+                            <label for="signin-input-address-estado" class="form-label">Estado *</label>
+                            <input type="text" class="form-control" id="signin-input-address-estado" name="address-estado" />
+                        </div>
+                    </div>
+                    <div class="col mb-3">
+                        <label for="signin-input-responsavel" class="form-label">Nome do responsável </label>
+                        <input type="text" class="form-control" id="signin-input-responsavel" name="responsavel" />
+                    </div>
+                    <div class="col mb-3">
+                        <label for="signin-input-documento-responsavel" class="form-label">Documento do responsável </label>
+                        <input type="text" inputmode="numeric" class="form-control" id="signin-input-documento-responsavel" name="documento-responsavel" maxlength="14" OnKeyPress="formatar('###.###.###-##',this)" />
+                    </div>
+                    <div id="erroralert" class="row alert alert-danger" role="alert" hidden>
+                        Confira seus dados!
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col col-lg-6">
+                            <button id="signinbutton" name="signinbutton" class="w-100 btn btn-primary" type="submit">AVANÇAR</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script src="./sign_in.js" type="module"></script>
+
+
+    </body>
+
+</html>
