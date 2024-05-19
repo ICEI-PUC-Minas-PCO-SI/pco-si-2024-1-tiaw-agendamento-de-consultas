@@ -1,0 +1,65 @@
+[
+    {
+        "nome": "Hospital Centro Vida",
+        "profissionais": [
+            {
+                "nome": "Marina",
+                "especialidades": [
+                    "Cardiologia",
+                    "Oftamologia",
+                    "Urologia"
+                ]
+            },
+            {
+                "nome": "Victor",
+                "especialidades": [
+                    "Fisioterapia",
+                    "Oftamologia"
+                ]
+            },
+            {
+                "nome": "Diego",
+                "especialidades": [
+                    "Otorrinolaringologia",
+                    "Urologia"
+                ]
+            },
+            {
+                "nome": "Tiago",
+                "especialidades": [
+                    "Pneumologia",
+                    "Urologia"
+                ]
+            }
+        ]
+    },
+    {
+        "nome": "Centro Médico Gentil",
+        "profissionais": [
+            {
+                "nome": "Marcelo",
+                "especialidades": [
+                    "Fisioterapia",
+                    "Oftamologia"
+                ]
+            },
+            {
+                "nome": "Amanda",
+                "especialidades": [
+                    "Ortodontia"
+                ]
+            }
+        ]
+    },
+    {
+        "nome": "Hospital Alberto Ferraz",
+        "profissionais": [
+            {
+                "nome": "Pedro",
+                "especialidades": [
+                    "Cardiologia"
+                ]
+            }
+        ]
+    }
+]

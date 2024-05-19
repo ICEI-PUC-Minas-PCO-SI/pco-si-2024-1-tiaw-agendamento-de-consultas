@@ -1,0 +1,15 @@
+#number-days label {
+    color: gray;
+}
+
+.availableDate {
+    color: black;
+}
+
+.label-dia-selecionado {
+    color: #0a58ca!important;
+}
+
+.btn-horario-selecionado {
+    background-color: #0a58ca;
+}
