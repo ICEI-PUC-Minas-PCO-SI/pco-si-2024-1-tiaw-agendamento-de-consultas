@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleção de Datas</title>
+
+    <!--Link bootstrap-->
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <!--Link icones-->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    
+    <!--Link CSS-->
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleChristian.css">
+
+</head>
+<body class="bg-body-secondary mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col d-flex justify-content-end">
+                <button id="more" type="button" class="material-symbols-outlined rounded-5 fs-2">more_horiz</button>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col d-flex justify-content-center">
+                <h3>Selecione uma data</h3>
+            </div>
+        </div>
+
+
+        <!--Agenda-->
+
+        <div id="container-month">
+            <div class="row" id="month">
+                <div class="col p-0">
+                    <span><input type="month" name="month" placeholder="Mês"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col" id="days-week"><span>Dom</span></div>
+                <div class="col" id="days-week"><span>Seg</span></div>
+                <div class="col" id="days-week"><span>Ter</span></div>
+                <div class="col" id="days-week"><span>Qua</span></div>
+                <div class="col" id="days-week"><span>Qui</span></div>
+                <div class="col" id="days-week"><span>Sex</span></div>
+                <div class="col" id="days-week"><span>Sáb</span></div>
+            </div>
+
+            <div class="row">
+                <div class="col" id="number-days">
+                    <input type="radio" name="number" id="number">
+                    <label for="number"></label>
+                </div>
+            </div>    
+        </div>
+
+        <div class="row mt-5">
+            <div class="col d-flex justify-content-center">
+                <button type="button" id="avancar" class="button w-100">Avançar</button>
+            </div>
+        </div>
+
+    <script src="script.js"></script>
+
+    <script src="scriptChristian.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</html>
