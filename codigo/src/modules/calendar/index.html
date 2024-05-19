@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="calendar.css">
+    <script src="https://kit.fontawesome.com/ae561a7f3d.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-body-secondary mt-5">
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col d-flex justify-content-center">
+                <h3>AGENDAR UMA CONSULTA</h3>
+            </div>
+        </div>
+
+        <div class="row d-grid justify-content-center">
+            <div class="col">
+                <button class="fs-1 border-0 bg-transparent" onclick="changeMonth(-1)"><i class="fa-solid fa-angles-left"></i></button>
+                <span id="date-display" class="fs-1 fw-bold ms-3 me-3"></span>
+                <button class="fs-1 border-0 bg-transparent" onclick="changeMonth(1)"><i class="fa-solid fa-angles-right"></i></button>
+            </div>
+        </div>
+
+        <!--Inicio - Calendario-->
+        <div class="p-4 m-auto" id="container-month">
+            <div class="row justify-content-between">
+                <div class="col p-0 d-grid justify-content-center"><span class="fw-bold fs-15 p-0">Dom</span></div>
+                <div class="col p-0 d-grid justify-content-center"><span class="fw-bold fs-15 p-0">Seg</span></div>
+                <div class="col p-0 d-grid justify-content-center"><span class="fw-bold fs-15 p-0">Ter</span></div>
+                <div class="col p-0 d-grid justify-content-center"><span class="fw-bold fs-15 p-0">Qua</span></div>
+                <div class="col p-0 d-grid justify-content-center"><span class="fw-bold fs-15 p-0">Qui</span></div>
+                <div class="col p-0 d-grid justify-content-center"><span class="fw-bold fs-15 p-0">Sex</span></div>
+                <div class="col p-0 d-grid justify-content-center"><span class="fw-bold fs-15 p-0">Sáb</span></div>
+            </div>
+
+            <div class="row">
+                <div class="col p-0" id="number-days">
+                    <input class="d-none" type="radio" name="days" id="day">
+                </div>
+            </div>
+        </div>
+        <!--Fim - Calendario-->
+
+        <!--Seleção de Hora-->
+        <div class="col row row-cols-4 p-4 m-auto" id="days-hours">
+            <input class="d-none" type="radio" name ="hours" id="hour">
+        </div>
+
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <button type="button" id="advance" onclick="scheduleAppointment()" class="button w-100 text-white p-1 border-0">Avançar</button>
+            </div>
+        </div>
+
+    <script src="calendar.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</html>
