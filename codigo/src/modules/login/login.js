@@ -25,6 +25,7 @@ document.getElementById("loginbutton").addEventListener("click", async function 
         return;
     }
     alert.hidden = true;
+    window.alert("Login Com sucesso!")
     localStorage.setItem("credential", credential);
     window.location.replace("/codigo/src/modules/welcome");
 });
