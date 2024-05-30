@@ -41,11 +41,11 @@ function isDataValid(data, fileType){
 
 function download(url, file_type) {
     fetch(url)
-        .then((res) => {
-            if (!res.ok) {
-                throw new Error("Network Problem");
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Problema de conexão");
             }
-            return res.blob();
+            return response.blob();
         })
         .then((file) => {
             const ex = getFileExtention(url);
