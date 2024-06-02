@@ -50,10 +50,12 @@ document.getElementById("loginbutton").addEventListener("click", async function 
     if(credential == null){
         alert.innerText = "Login inválido";
         alert.hidden = false;
+        
         return;
     }
     alert.hidden = true;
-    window.alert("Login Com sucesso!")
+    $('.toast').hidden = false;
+    $('.toast').toast('show');
     localStorage.setItem("credential", credential);
-    window.location.replace("/codigo/src/modules/welcome");
+    window.location.replace(`/codigo/src/modules/sign_in/?id=${credential.user.uid}`);
 });
