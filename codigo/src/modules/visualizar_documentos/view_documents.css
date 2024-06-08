@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#container-files {
+    box-shadow: 3px 3px 7px black;
+    aspect-ratio: 1 / 0.75;
+    max-width: 640px;
+}
+
+#patient-data,
+#request-data {
+    cursor: pointer;
+}
+
+#finalize {
+    background-color: #7240ff;
+    user-select: none;
+    transition: 0.2s ease all;
+    max-width: 540px;
+}
+
+.row {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+:root {
+    --bs-border-width: 3px
+}
