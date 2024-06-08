@@ -56,6 +56,6 @@ document.getElementById("loginbutton").addEventListener("click", async function 
     alert.hidden = true;
     $('.toast').hidden = false;
     $('.toast').toast('show');
-    localStorage.setItem("credential", credential);
+    localStorage.setItem("credential", JSON.stringify(credential));
     window.location.replace(`/codigo/src/modules/sign_in/?id=${credential.user.uid}`);
 });

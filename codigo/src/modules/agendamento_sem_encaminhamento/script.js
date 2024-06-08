@@ -133,8 +133,6 @@ selectClinicaHospital.addEventListener('change', event => {
                 }
             }
         }
-
-            
     }
     limparOpcoes(selectProfissional);
     inserirOpcoes(selectProfissional, profissionaisDisponiveis);

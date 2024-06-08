@@ -13,6 +13,7 @@ function starvalue() {
 
     for (var i = 0; i < value.length; i++) {
         if(value[i].checked) {
+            // TODO: chamar firebase e avaliar atendimento
             console.log(value[i].value)
         }
     }

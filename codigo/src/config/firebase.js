@@ -1,6 +1,3 @@
-// import { } from "https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js";
-// import { } from "https://www.gstatic.com/firebasejs/6.3.5/firebase-firestore.js";
-// import { } from "https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyC950Slq6RoGWoXUA4WU6O4iuQdzX_k-qQ",
@@ -16,6 +13,4 @@ firebase.initializeApp(firebaseConfig);
 
 
 
-
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
+// export default firebase

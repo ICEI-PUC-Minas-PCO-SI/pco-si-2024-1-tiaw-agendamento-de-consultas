@@ -62,7 +62,6 @@ function download(url, file_type) {
 
 function getFileExtention(url) {
     const match = url.match(/\.[0-9a-z]+$/i);
-    console.log(match[0])
     return match ? match[0].slice(1) : "";
 }
 
