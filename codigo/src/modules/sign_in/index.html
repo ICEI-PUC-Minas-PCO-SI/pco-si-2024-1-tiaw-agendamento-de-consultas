@@ -8,12 +8,16 @@
     <script defer xxsrc="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./sign_in.css">
+    <link rel="stylesheet" href="../../../index.css">
 
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
+
+    <!-- Interno -->
+    <script src="./sign_in_controller.js"></script>
 
     <title>Agendaí</title>
     <script>
@@ -32,7 +36,6 @@
 
 
 <body>
-
     <body onload="document.loginform.nome.focus()" class="container vertical-center">
         <div class="container">
             <h1 class="h1 text-center mb-5  ">DADOS PESSOAIS</h1>
@@ -102,6 +105,9 @@
                         Confira seus dados!
                     </div>
                     <div class="row justify-content-center">
+                        <div class="col col-lg-6" id="editdiv" hidden>
+                            <button id="editbutton" name="editbutton" class="w-100 btn btn-outline-primary" type="submit">EDITAR</button>
+                        </div>
                         <div class="col col-lg-6">
                             <button id="signinbutton" name="signinbutton" class="w-100 btn btn-primary" type="submit">AVANÇAR</button>
                         </div>

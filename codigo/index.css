@@ -2,15 +2,23 @@
     background-color: #7240ff;
 }
 
-.btn-primary:hover{
+.btn-primary:hover {
     background-color: #5621ea;
 
 }
 
+.btn-primary:active{
+    background-color: #5621ea !important;
+    border-color: #5621ea !important;
+    box-shadow: #7240ff !important;
+}
+
 .vertical-center {
-    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-    min-height: 100vh; /* These two lines are counted as one :-)       */
-  
+    min-height: 100%;
+    /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh;
+    /* These two lines are counted as one :-)       */
+
     display: flex;
     align-items: center;
 }
@@ -21,12 +29,45 @@
     font-size: 40;
 }
 
-.btn-outline-primary{
+.btn-outline-primary {
     color: #7240ff;
     border-color: #7240ff;
 }
-.btn-outline-primary:hover{
-    color: #3607b8;
+
+.btn-outline-primary:hover {
+    color: #402d76;
     border-color: #450ae7;
     background-color: white;
+}
+
+
+.btn-primary {
+    background-color: #7240ff;
+}
+
+.btn-primary:hover {
+    background-color: #5621ea;
+
+}
+
+
+.btn-primary {
+    background-color: #7240ff;
+}
+
+
+.vertical-center {
+    min-height: 100%;
+    /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh;
+    /* These two lines are counted as one :-)       */
+
+    display: flex;
+    align-items: center;
+}
+
+
+.h1 {
+    font-weight: bolder;
+    font-size: 40;
 }
