@@ -1,0 +1,59 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#section-envio {
+    display: flex;
+    flex-direction: row;
+    border: 4px solid;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.div-enviar-documento {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-enviar-documento {
+    border: 8px solid;
+    border-radius: 1%;
+    margin: 150px 25px;
+    padding: 80px 25px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.div-preview-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+input[type=file] {
+    display: none;
+}
+
+.div-preview-images {
+    display: flex;
+}
+
+#btn-enviar {
+    background-color: #7240ff;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    width: 100%;
+    margin-top: 40px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#btn-enviar:hover {
+    background-color: #5621ea;
+}
