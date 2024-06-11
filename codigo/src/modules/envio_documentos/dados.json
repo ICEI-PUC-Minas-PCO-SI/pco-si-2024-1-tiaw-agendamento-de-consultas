@@ -1,0 +1,16 @@
+{ 
+    "user_id": "uuid",
+    "id_consulta": "uuid",
+    "files": [
+        {
+            "file_id": "uuid",
+            "file_type": "pedido",
+            "url": "file_url"
+        },
+        {
+            "file_id": "uuid",
+            "file_type": "carteirinha",
+            "url": "file_url"
+        }
+    ]
+}

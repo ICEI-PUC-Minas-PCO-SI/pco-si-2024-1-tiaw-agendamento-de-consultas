@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envio de Documentos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <h1>ENVIO DE DOCUMENTOS</h1>
+        <h3>Envie seu pedido médico e carteirinha de convênio</h3>
+        <section id="section-envio">
+            <div class="div-enviar-documento">
+                <div id="btn-enviar-carteirinha" class="btn-enviar-documento">
+                    <h2>ENVIAR CARTEIRINHA</h2>
+                    <p>Arquivos enviados (<span id="span-quantidade-imagens-carteirinha">0</span>)</p>
+                    <input type="file" name="imgCarteirinha" id="inputImgCarteirinha" accept="image/jpeg, image/png">
+                    <div id="preview-images-carteirinha" class="div-preview-images"></div>
+                </div>
+            </div>
+            <div class="div-enviar-documento">
+                <div id="btn-enviar-pedido-medico" class="btn-enviar-documento">
+                    <h2>ENVIAR PEDIDO MÉDICO</h2>
+                    <p>Arquivos enviados (<span id="span-quantidade-imagens-pedido">0</span>)</p>
+                    <input type="file" name="imgPedido" id="inputImgPedido" accept="image/jpeg, image/png">
+                    <div id="preview-images-pedido" class="div-preview-images"></div>
+                </div>
+            </div>
+        </section>
+        <button id="btn-enviar">
+            ENVIAR ARQUIVOS
+        </button>
+        <p id="mensagem-retorno"></p>
+        <div id="div-enviados"></div>
+    </main>
+
+    <!-- <script src="localdata.js"></script>
+    <script src="app.js"></script> -->
+    <script src="newLocalData.js"></script>
+    <script src="newApp.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
