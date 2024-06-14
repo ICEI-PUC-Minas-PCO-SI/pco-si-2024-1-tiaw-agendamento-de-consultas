@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body {
+    width: 50%;
+    height: auto;
+    margin: 10vh auto;
+}
+
+.container-fluid {
+    width: 70%;
+    height: auto;
+}
+
+#campoDeHorarios {
+    border: 2px solid lightgray;
+    border-radius: 7px;
+    padding: 5px 5px;
+}
+
+#cardBody {
+    padding: 50px;
+    box-shadow: 2px 2px 7px gray;
+}
+
+input {
+    margin-right: 13px;
+    user-select: none;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+label {
+    user-select: none;
+    cursor: pointer;
+    transition: 0.2s ease all;
+}
+
+input[type="radio"]:not(:checked) {
+    appearance: none;
+    background: #7240ff;
+    width: 15px;
+    height: 15px;
+    border: 2px solid transparent;
+    border-radius: 100%;
+    transition: 0.3s ease all;
+}
+input[type="radio"]:checked {
+    appearance: none;
+    background: white;
+    width: 15px;
+    height: 15px;
+    border: 3px solid yellowgreen;
+    border-radius: 100%;
+}
+
+input:checked ~ label {
+    color: #5621ea;
+}
+
+#userName {
+    cursor: pointer;
+}
+.btnUser {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    transition: 0.3s ease all;
+}
+
+.btnUser:hover {
+    font-weight: 600;
+}
+
+#campoDeHorarios {
+    margin: 10px 0;
+}
+
+#btnIniciar {
+    width: 90vw;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #7240ff;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.2s ease all;
+}
+#btnIniciar:hover {
+    background-color: #5621ea;
+    border-radius: 7px;
+}
+
+
+@media screen and (max-width: 768px) {
+    body {
+        width: 100vw;
+        height: auto;
+        font-size: 14px;
+        margin: 5vh auto;
+    }
+    
+    .container-fluid {
+        width: 100vw;
+        height: auto;
+    }
+
+    #cardBody {
+        padding: 20px;
+    }
+
+    .hour {
+        padding: 0;
+    }
+
+    input {
+        margin-top: 4px;
+    }
+}
