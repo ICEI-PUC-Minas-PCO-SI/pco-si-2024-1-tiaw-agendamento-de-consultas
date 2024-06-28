@@ -6,14 +6,8 @@
 }
 
 body {
-    width: 50%;
-    height: auto;
-    margin: 10vh auto;
-}
-
-.container-fluid {
-    width: 70%;
-    height: auto;
+    height: 100vh;
+    align-content: center;
 }
 
 #campoDeHorarios {
@@ -22,16 +16,9 @@ body {
     padding: 5px 5px;
 }
 
-#cardBody {
-    padding: 50px;
-    box-shadow: 2px 2px 7px gray;
-}
-
 input {
-    margin-right: 13px;
     user-select: none;
     cursor: pointer;
-    margin-top: 5px;
 }
 
 label {
@@ -60,6 +47,7 @@ input[type="radio"]:checked {
 
 input:checked ~ label {
     color: #5621ea;
+    font-weight: 700;
 }
 
 #userName {
@@ -74,55 +62,4 @@ input:checked ~ label {
 
 .btnUser:hover {
     font-weight: 600;
-}
-
-#campoDeHorarios {
-    margin: 10px 0;
-}
-
-#btnIniciar {
-    width: 90vw;
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    background-color: #7240ff;
-    color: white;
-    font-weight: 600;
-    letter-spacing: 1.2px;
-    border: none;
-    cursor: pointer;
-    user-select: none;
-    transition: 0.2s ease all;
-}
-#btnIniciar:hover {
-    background-color: #5621ea;
-    border-radius: 7px;
-}
-
-
-@media screen and (max-width: 768px) {
-    body {
-        width: 100vw;
-        height: auto;
-        font-size: 14px;
-        margin: 5vh auto;
-    }
-    
-    .container-fluid {
-        width: 100vw;
-        height: auto;
-    }
-
-    #cardBody {
-        padding: 20px;
-    }
-
-    .hour {
-        padding: 0;
-    }
-
-    input {
-        margin-top: 4px;
-    }
 }

@@ -68,21 +68,23 @@ window.addEventListener('load', function () {
         
         let divH = document.createElement("div");
         divH.setAttribute("id", "horarios" + i);
-        divH.setAttribute("class", "hour col-3 d-flex my-2 justify-content-center fw-bold");
+        divH.setAttribute("class", "hour col-4 my-2 d-flex justify-content-around");
         
         let input = document.createElement("input");
         input.setAttribute("type", "radio");
         input.setAttribute("name", "hora")
         input.setAttribute("id", "hour"+i);
+        input.setAttribute("class", "mt-1")
 
         let label = document.createElement("label");
         label.setAttribute("id", "hourL" + i);
         label.setAttribute("for", "hora");
         label.textContent = `${pacientes[i].hora}`;
+        label.setAttribute("class", "m-0")
 
         let divU = document.createElement("div");
         divU.setAttribute("id", "userName" + i);
-        divU.setAttribute("class", "col-9 d-flex my-2 justify-content-start");
+        divU.setAttribute("class", "col-8 d-flex my-2 justify-content-around");
         
         let btn = document.createElement("button");
         btn.setAttribute("class", "btnUser");
