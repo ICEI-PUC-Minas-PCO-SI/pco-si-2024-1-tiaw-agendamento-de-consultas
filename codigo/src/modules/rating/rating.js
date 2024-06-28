@@ -20,10 +20,16 @@ function starvalue() {
 
 btn.onclick =  () => {
 
-    avaliation.style.display = 'none' // Torna o card das avaliações invisível
-    thanks.style.display = 'block'; // Mostra o card de agradescimento por usar a plataforma
-
-
+    avaliation.style.display = 'none'; // Torna o card das avaliações invisível
+    thanks.style.display = 'block';
+    thanks.innerHTML = `
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <p class="m-0">Obrigado por usar nossa plataforma!</p>
+            </div>
+        </div>    
+            
+    ` // Mostra o card de agradescimento por usar a plataforma
 
 
     setTimeout (() => {

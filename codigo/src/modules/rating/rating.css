@@ -1,36 +1,18 @@
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
-
+    user-select: none;
 }
 
 body {
-    width: 70%;
-    height: auto;
-    margin: 30vh auto;
+    margin: 35vh auto;
 }
 
 #avaliacao {
     display: block;
 }
 
-#title {
-    user-select: none;
-    font-size: 15px;
-    word-spacing: 0.5px;
-}
-
-
 #stars {
     cursor: pointer;
-}
-
-#question {
-    display: block;
-}
-#voting {
-    display: block;
 }
 
 input {
@@ -44,7 +26,7 @@ label {
 
 input:not(:checked) ~ label:hover,
 input:not(:checked) ~ label:hover ~ label{
-    color: rgb(228, 190, 24);
+    color: #7240ff;
 }
 
 input:checked ~ label {
@@ -72,36 +54,8 @@ input#star-1:checked ~ label {
     text-shadow: 0px 0px 2px yellow;
 }
 
-#finalizar {
-    display: block;
-    background-color: #7240ff;
-    color: white;
-    text-shadow: 2px 2px 1px black;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s ease all;
-}
-#finalizar:hover {
-    background-color: #5621ea;
-}
 
 #thanks {
     display: none;
     font-weight: bold;
-}
-
-@media screen and (min-width: 769px){
-    body {
-        width: 50%;
-        height: auto;
-        margin: 40vh auto;
-    }
-    
-    .card {
-        width: 350px;
-    }
-
-    #title {
-        font-size: 20px;
-    }
 }
