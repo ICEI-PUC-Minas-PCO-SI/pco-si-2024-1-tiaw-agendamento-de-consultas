@@ -92,14 +92,6 @@ select {
     align-content: center;
 }
 
-form > div, section{
-    background-color: #402d76;
-    margin: 40px ;
-    align-self: center;
-    justify-self: center;
-    align-content: center;
-    
-}
 
 #section-tipo-agendamento {
     border: 1px solid;
@@ -110,3 +102,4 @@ form > div, section{
 .row {
     justify-content: center;
 }
+

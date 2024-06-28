@@ -143,8 +143,24 @@ selectProfissional.addEventListener("change", event => {
     localDB.setItem("profissionalSelecionado", event.target.value);
 });
 
+async function checkAuth(ev, attendance_type) {
+    try {
+        ev.preventDefault();
+        const currentUser = getUser();
+        if (!currentUser) {
+            window.alert('Sessão encerrada!');
+            window.location.replace("/codigo/");
+            return;
+        }
+    }catch(e){
+        console.error(e);
+    }
+}
+
 buttonAvancar.addEventListener("click", event => {
     event.preventDefault();
+    
+
     if(localDB.getItem("tipoConsultaSelecionada") && localDB.getItem("especialidadeSelecionada") && localDB.getItem("profissionalSelecionado") && localDB.getItem("hospitalSelecionado")) {
         console.log("Avançar!");
     }

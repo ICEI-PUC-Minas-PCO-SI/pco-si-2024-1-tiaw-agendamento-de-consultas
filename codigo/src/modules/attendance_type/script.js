@@ -2,7 +2,7 @@
 
 function getUser() {
     try {
-        const currentUser = JSON.parse(localStorage.getItem('credential'))
+        const currentUser = JSON.parse(localStorage.getItem('@AGENDAI.USER'))
         return currentUser;
     } catch (err) {
         console.log(err);
@@ -32,15 +32,18 @@ async function checkAuth(ev, attendance_type) {
         if (!doc) {
             throw 'Erro ao criar documento';
         }
-        await doc.set({ type: attendance_type })
-        localStorage.setItem('@AGENDAI.CONSULTA', doc.id)
+
         switch (attendance_type) {
             case 'CONSULTA':
+                await doc.set({ type: attendance_type, user: currentUser.user.uid, step: "AGENDAMENTO_SEM_ENCAMINHAMENTO" })
+                localStorage.setItem('@AGENDAI.CONSULTA', doc.id)
                 window.location.replace("/codigo/src/modules/agendamento_sem_encaminhamento/");
                 break;
             case 'EXAME':
             case 'ENCAMINHAMENTO':
-                window.location.replace("/codigo/src/modules/");
+                await doc.set({ type: attendance_type, user: currentUser.user.uid, step: "ENVIO_DE_DOCUMENTOS" })
+                localStorage.setItem('@AGENDAI.CONSULTA', doc.id)
+                window.location.replace("/codigo/src/modules/envio_documentos/");
                 break;
             default:
         }
