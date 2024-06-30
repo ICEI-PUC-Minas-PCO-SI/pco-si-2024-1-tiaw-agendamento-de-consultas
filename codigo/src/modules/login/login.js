@@ -65,10 +65,12 @@ document.getElementById("loginbutton").addEventListener("click", async function 
 
   localStorage.setItem("@AGENDAI.USER", JSON.stringify(credential));
 
-  firebase.firestore().collection("user_data").doc(credential.user.uid).get().then((doc) => {
-    console.log(doc);
-  })
-
+  let user = await firebase.firestore().collection("user_data").doc(credential.user.uid).get();
+  const user_data = user.data()
+  if(user_data.admin == true){
+    window.location.replace(`/codigo/src/modules/horarios_admin`);
+    return;
+  }
   //carregar dados usuario
   window.location.replace(`/codigo/src/modules/sign_in/?id=${credential.user.uid}`);
 });
