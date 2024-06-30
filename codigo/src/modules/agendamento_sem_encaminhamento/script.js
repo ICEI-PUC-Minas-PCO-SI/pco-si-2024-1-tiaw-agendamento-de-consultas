@@ -2,51 +2,108 @@ var selectEspecialidades = document.getElementById("especialidade");
 var selectClinicaHospital = document.getElementById("clinica");
 var selectProfissional = document.getElementById("profissional");
 
-var tipoConsulta;
+selectClinicaHospital.setAttribute("disabled", true)
+selectProfissional.setAttribute("disabled", true)
+
+var tipoConsulta = '';
 var radioInputConvenio = document.getElementById("convenio");
 var radioInputParticular = document.getElementById("particular");
 var buttonAvancar = document.getElementById("avancar");
+var especialitieFilter = ''
+var hospitalFilter = ''
+var hasEspecialitie = false
 
-// Dados recebidos da base de dados, por enquanto estão dados estáticos PARA TESTE
-var especialidades = ["Cardiologia", "Fisioterapia", "Oftamologia", "Otorrinolaringologia", "Pneumologia", "Urologia", "Ortodontia"];
-var clinicaHospital = ["Hospital Centro Vida", "Centro Médico Gentil", "Hospital Alberto Ferraz"];
+var userList = []
+var db = firebase.firestore()
+await db.collection("user_data").where("admin", "==", true).get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+        let user = {
+            ...doc.data(),
+            id: doc.id
+        }
+        userList.push(user)
+    });
+});
+var userNameList = userList.map((user)=>{return user.first_name+" "+user.last_name})
+var hospitalList = userList.map((user)=>user.hospital)
+hospitalList = [...new Set(hospitalList)];
+var especialities = userList.map((user)=>user.especialidade)
+especialities = [...new Set(especialities)]
 
-// Local Storage setado
-var localDB = localStorage;
+inserirOpcoes(selectEspecialidades, especialities)
+inserirOpcoes(selectClinicaHospital, hospitalList)
+inserirOpcoes(selectProfissional, userNameList)
 
-localDB.removeItem("tipoConsultaSelecionada");
-localDB.removeItem("especialidadeSelecionada");
-localDB.removeItem("hospitalSelecionado");
-localDB.removeItem("profissionalSelecionado");
-
-// Pegando do arquivo .json os dados necessários (hospitais, profissionais que trabalham neles e suas especialidades)
-fetch("./listaHospitais.json").then(res => {
-    if(!res.ok) {
-        throw new Error
-            (`Erro! Status: ${res.status}`);
-    }
-    return res.json();
-}).then(dados => {
-    localDB.setItem("hospitais", JSON.stringify(dados));
-}).catch(erro => {
-    console.error(`Erro ao puxar dados do arquivo json: ${erro}`);
+selectEspecialidades.addEventListener('change', event => {
+    especialitieFilter = event.target.value
+    userNameList = userList.filter((user)=>
+        user.especialidade == especialitieFilter && (hospitalFilter != '' ? user.hospital == hospitalFilter : true)
+    ).map((user)=>user.first_name+" "+user.last_name)
+    hospitalList = userList.filter((user)=> user.especialidade == especialitieFilter).map((user)=>user.hospital)
+    hospitalList = [...new Set(hospitalList)];
+    inserirOpcoes(selectProfissional, userNameList)
+    inserirOpcoes(selectClinicaHospital, hospitalList)
+    selectClinicaHospital.removeAttribute("disabled")
+    selectProfissional.setAttribute("disabled", true)
 });
 
+selectClinicaHospital.addEventListener('change', event =>{
+    hospitalFilter = event.target.value.toLowerCase()
+    userNameList = userList.filter((user)=>
+        user.hospital.toLowerCase() == hospitalFilter && (especialitieFilter != '' ? user.especialidade == especialitieFilter : true)
+    ).map((user)=>user.first_name+" "+user.last_name)
+    inserirOpcoes(selectProfissional, userNameList)
+    selectProfissional.removeAttribute("disabled")
+})
 
-// Armazenando no local storage as especialidades e hospitais disponíveis
-localDB.setItem("especialidades", especialidades);
+radioInputConvenio.addEventListener('change', event => {
+    if(event.target.checked) {
+        tipoConsulta = event.target.id;
+    }
+})
 
-var hospitais = JSON.parse(localDB.getItem("hospitais"));
+radioInputParticular.addEventListener('change', event => {
+    if(event.target.checked) {
+        tipoConsulta = event.target.id;
+    }
+})
 
-var especialidadeSelecionada = document.getElementById("especialidade").value;
-var clinicaHospitalSelecionado = document.getElementById("clinica").value;
-var profissionalSelecionado = document.getElementById("profissional").value;
+buttonAvancar.addEventListener("click", event => {
+    event.preventDefault();
+    let erroMessage = '';
+    if(tipoConsulta == ''){
+        erroMessage += erroMessage == '' ? "Preencha o tipo de consulta" : ", tipo de consulta"
+    }
+    if(selectEspecialidades.value == ''){
+        erroMessage += erroMessage == '' ? "Preencha a especialidade" : ", especialidade"
+    }
+    if(selectClinicaHospital.value == ''){
+        erroMessage += erroMessage == '' ? "Preencha a clinica/hospital" : ", clinica/hospital"
+    }
+    if(selectEspecialidades.value != '' && selectClinicaHospital.value != '' && tipoConsulta != '') {
+        let consult = localStorage.getItem("@AGENDAI.CONSULTA")
+        db.collection("consultas").doc(consult).update({
+            tipo: tipoConsulta,
+            especialidade: selectEspecialidades.value,
+            local: selectClinicaHospital.value,
+            profissional: selectProfissional.value
+        }).then(()=>{
+            window.location.replace('/codigo/src/modules/envio_documentos')
+        }).catch((error) => {
+            console.error("Error updating document: ", error);
+            alert("Erro, favor tentar novamente!")
+        });
+    }
+    else {
+        alert(erroMessage + " antes de continuar.");
+    }
+});
 
-// Insere as opções (argumento array) dentro do select (argumento element)
-function inserirOpcoes(element, array) {  
-    // Adicionando opções disponíveis
+// Insere as opções dentro do select
+function inserirOpcoes(element, array) {
+    limparOpcoes(element)
     for(let i = 0; i < array.length; i++) {
-        optionElement = document.createElement('option');
+        let optionElement = document.createElement('option');
         optionElement.value = array[i].toLowerCase();
         optionElement.innerText = array[i];
         element.appendChild(optionElement);
@@ -55,117 +112,10 @@ function inserirOpcoes(element, array) {
 
 function limparOpcoes(element) {
     let optionElement = document.createElement('option');
-    optionElement.value = "nenhuma";
+    optionElement.value = '';
     optionElement.innerText = "Nenhuma selecionada";
     optionElement.disabled = true;
     optionElement.selected = true;
     element.innerText = "";
     element.appendChild(optionElement);
 }
-
-inserirOpcoes(selectEspecialidades, especialidades);
-
-radioInputConvenio.addEventListener('change', event => {
-    if(event.target.checked) {
-        tipoConsulta = event.target.id;
-        localDB.setItem("tipoConsultaSelecionada", event.target.id);
-        limparOpcoes(selectEspecialidades);
-        limparOpcoes(selectClinicaHospital);
-        limparOpcoes(selectProfissional)
-        inserirOpcoes(selectEspecialidades, especialidades);
-        localDB.removeItem("especialidadeSelecionada");
-        localDB.removeItem("hospitalSelecionado");
-        localDB.removeItem("profissionalSelecionado");
-    }
-})
-
-radioInputParticular.addEventListener('change', event => {
-    if(event.target.checked) {
-        tipoConsulta = event.target.id;
-        localDB.setItem("tipoConsultaSelecionada", event.target.id);
-        limparOpcoes(selectEspecialidades);
-        limparOpcoes(selectClinicaHospital);
-        limparOpcoes(selectProfissional)
-        inserirOpcoes(selectEspecialidades, especialidades);
-        localDB.removeItem("especialidadeSelecionada");
-        localDB.removeItem("hospitalSelecionado");
-        localDB.removeItem("profissionalSelecionado");
-    }
-})
-
-// Event listeners para que somente as opções compatíveis sejam mostradas
-selectEspecialidades.addEventListener('change', event => {
-    let hospitaisDisponiveis = []
-    let hospitais = JSON.parse(localDB.getItem("hospitais"));
-    localDB.setItem("especialidadeSelecionada", event.target.value);
-    for(let i = 0; i < hospitais.length; i++) {
-        for(let j = 0; j < hospitais[i].profissionais.length; j++) {
-            console.log(hospitais[i].profissionais[j].especialidades.length);
-            for (let k = 0; k < hospitais[i].profissionais[j].especialidades.length; k++) {
-                // k = hospitais[i].profissionais[j].especialidades.length;
-                // j = hospitais[i].profissionais.length;
-                if(hospitais[i].profissionais[j].especialidades[k].toLowerCase() == event.target.value.toLowerCase()) {
-                    if(!hospitaisDisponiveis.includes(hospitais[i].nome)) {
-                        hospitaisDisponiveis.push(hospitais[i].nome);
-                    }
-                }
-            }
-
-        }
-    }
-    limparOpcoes(selectClinicaHospital);
-    limparOpcoes(selectProfissional)
-    inserirOpcoes(selectClinicaHospital, hospitaisDisponiveis);
-    localDB.removeItem("hospitalSelecionado");
-    localDB.removeItem("profissionalSelecionado");
-});
-
-selectClinicaHospital.addEventListener('change', event => {
-    let profissionaisDisponiveis = [];
-    localDB.setItem("hospitalSelecionado", event.target.value);
-    for(let i = 0; i < hospitais.length; i++) {
-        if(hospitais[i].nome.toLowerCase() == selectClinicaHospital.value.toLowerCase()) {
-            for(let j = 0; j < hospitais[i].profissionais.length; j++) {
-                for(let l = 0; l < hospitais[i].profissionais[j].especialidades.length; l++) {
-                    if(hospitais[i].profissionais[j].especialidades[l].toLowerCase() == selectEspecialidades.value.toLowerCase()) {
-                        profissionaisDisponiveis.push(hospitais[i].profissionais[j].nome);
-                    }
-                }
-            }
-        }
-    }
-    limparOpcoes(selectProfissional);
-    inserirOpcoes(selectProfissional, profissionaisDisponiveis);
-    localDB.removeItem("profissionalSelecionado");
-});
-
-selectProfissional.addEventListener("change", event => {
-    localDB.setItem("profissionalSelecionado", event.target.value);
-});
-
-async function checkAuth(ev, attendance_type) {
-    try {
-        ev.preventDefault();
-        const currentUser = getUser();
-        if (!currentUser) {
-            window.alert('Sessão encerrada!');
-            window.location.replace("/codigo/");
-            return;
-        }
-    }catch(e){
-        console.error(e);
-    }
-}
-
-buttonAvancar.addEventListener("click", event => {
-    event.preventDefault();
-    
-
-    if(localDB.getItem("tipoConsultaSelecionada") && localDB.getItem("especialidadeSelecionada") && localDB.getItem("profissionalSelecionado") && localDB.getItem("hospitalSelecionado")) {
-        console.log("Avançar!");
-    }
-    else {
-        console.log("Preencha tudo antes de continuar.");
-    }
-});
-
