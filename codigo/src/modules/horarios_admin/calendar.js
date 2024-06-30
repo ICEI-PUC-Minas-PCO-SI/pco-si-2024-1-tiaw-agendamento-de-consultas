@@ -3,15 +3,16 @@ let hoursElement = document.querySelector('#days-hours');
 let dateDisplay = document.getElementById('date-display')
 
 var now = new Date()
+var visibleDate = new Date()
 var date = new Date(2000, 1, 1, 0)
 var hourElements = []
 
-dateDisplay.innerHTML = (now.getMonth()+1)+", "+now.getFullYear()
-createCalendarDays(now);
+dateDisplay.innerHTML = (visibleDate.getMonth()+1)+", "+visibleDate.getFullYear()
+createCalendarDays(visibleDate);
 
 function createCalendarDays(){
     //cria datas vazias no comeco do mes
-    let monthFirstWeakDay = new Date(now.getFullYear(), now.getMonth(), 1).getDay()
+    let monthFirstWeakDay = new Date(visibleDate.getFullYear(), visibleDate.getMonth(), 1).getDay()
     let counter = 0 // 0, valor de domingo no Date.getDay()
     while(counter != monthFirstWeakDay){
         let elem = document.createElement("label")
@@ -28,7 +29,7 @@ function createCalendarDays(){
     }
     
     //cria datas preenchidas do mes
-    let monthDays = new Date(now.getFullYear(), now.getMonth()+1, 0).getDate()
+    let monthDays = new Date(visibleDate.getFullYear(), visibleDate.getMonth()+1, 0).getDate()
     for(i = 1; i <= monthDays; i++) {
         let elem = document.createElement("label")
         elem.setAttribute("id", "day"+i)
@@ -56,67 +57,31 @@ function clearCalendarDays(){
 }
 
 function setDate(day){
-    if(date.getHours() > 1){
-        var userResponse = confirm("Ao alterar a data, seleção do horario será desfeita. Deseja alterar a data?");
-        if(!userResponse){
-            return
-        }
-    }
-    date = new Date(now.getFullYear(), now.getMonth(), day)
-    document.getElementsByClassName('selected')[0]?.setAttribute('class', '')
+    date = new Date(visibleDate.getFullYear(), visibleDate.getMonth(), day)
+    document.getElementsByClassName('selected')[0]?.setAttribute('class', 'day')
     document.getElementsByClassName('selectedButton')[0]?.setAttribute('class', '')
     date.setHours(0)
     document.getElementById('day'+day).setAttribute('class', 'selected')
-    clearHours()
-    createHours()
 }
-
-function clearHours(){
-    hourElements.forEach(element =>{
-        element.remove()
-    })
-};
-
-function setHour(hour){
-    date.setHours(hour)
-    document.getElementsByClassName('selectedButton')[0]?.setAttribute('class', '')
-    document.getElementById('hour'+hour).setAttribute('class', 'selectedButton')
-};
 
 function scheduleAppointment(){
-    let avancar = document.getElementById('advance');
-
-    avancar.addEventListener('click', () => {
-        if(date.getFullYear() < now.getFullYear()){
-            alert("Nenhuma data selecionada. Favor selecionar uma data.")
-            return;
+    if(date.getFullYear() < visibleDate.getFullYear()){
+        alert("Nenhuma data selecionada. Favor selecionar uma data.")
+        return;
+    }
+    if(date.getTime() < now.getTime()){
+        var confirmar = confirm("Data selecionada anterior a data atual. Deseja continuar?.")
+        if(!confirmar) {
+            location.reload();
         }
-        if(date.getTime() < now.getTime()){
-            var confirmar = confirm("Data selecionada anterior a data atual. Deseja continuar?.")
-            if(!confirmar) {
-                location.reload();
-            }
-            if(confirmar) {
-                window.location.replace("horarios/horarios.html");
-            }
+        if(confirmar) {
+            window.location.replace(`horarios/horarios.html?date=${date}`);
         }
-        else {
-            window.location.replace("horarios/horarios.html");
-        }
-    });
-    
-    
+    }
+    else {
+        window.location.replace(`horarios/horarios.html?date=${date}`);
+    }
 };
-
-function canSchedule(storage, schedule) {
-    let profissionalSchedule = storage.filter((element) => element.profissional == schedule.profissional)
-    let alreadyScheduled = profissionalSchedule.find((element) => {
-        let date1 = new Date(element.date).getTime()
-        let date2 = new Date(schedule.date).getTime()
-        return date1 == date2
-    })
-    return alreadyScheduled ? 1 : 0
-}
 
 function changeMonth(number){
     if(date.getFullYear() != 2000){
@@ -125,12 +90,11 @@ function changeMonth(number){
             return
         }
     }
-    now.addMonths(number)
+    visibleDate.addMonths(number)
     date = new Date(2000, 1, 1, 0)
-    clearHours()
     clearCalendarDays()
-    createCalendarDays(now)
-    dateDisplay.innerHTML = (now.getMonth()+1)+", "+now.getFullYear()
+    createCalendarDays(visibleDate)
+    dateDisplay.innerHTML = (visibleDate.getMonth()+1)+", "+visibleDate.getFullYear()
 }
 
 Date.prototype.addMonths = function(months) {
