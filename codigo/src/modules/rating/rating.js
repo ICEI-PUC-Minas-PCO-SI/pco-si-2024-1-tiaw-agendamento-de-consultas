@@ -7,29 +7,33 @@ const question = document.querySelector('#pergunta');
 const voting = document.querySelector('#votacao');
 const thanks = document.querySelector('#thanks');
 
+let rate = 0;
+
 //Função responsável por caputurar o valor da estrela votada:
 function starvalue() {
     const value = document.getElementsByName('star');
 
     for (var i = 0; i < value.length; i++) {
-        if(value[i].checked) {
-            // TODO: chamar firebase e avaliar atendimento
-            console.log(value[i].value)
+        if (value[i].checked) {
+            rate = [i].value;
         }
     }
 }
 
-btn.onclick =  () => {
+btn.onclick = async () => {
 
     avaliation.style.display = 'none' // Torna o card das avaliações invisível
     thanks.style.display = 'block'; // Mostra o card de agradescimento por usar a plataforma
 
+    const consulta = localStorage.getItem("@AGENDAI.CONSULTA");
+    if (consulta) {
+        const doc = await firebase.firestore().collection('consultas').doc(consulta).update({
+            'rate': rate,
+        });
+    }
 
-
-
-    setTimeout (() => {
+    setTimeout(() => {
         location.reload();
     }, 2000) // Aqui será feita uma realocação para a página inicial da aplicação após alguns segundos
 };
-
 // Após clicar no botão será feito um link com o firebase para armazenar os dados da avaliação.
