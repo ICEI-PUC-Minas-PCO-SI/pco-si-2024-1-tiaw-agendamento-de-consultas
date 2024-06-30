@@ -5,7 +5,6 @@
 }
 
 #container-files {
-    box-shadow: 3px 3px 7px black;
     aspect-ratio: 1 / 0.75;
     max-width: 640px;
 }
