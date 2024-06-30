@@ -67,7 +67,7 @@
                     </div>
                     <div class="col mb-3">
                         <label for="signin-input-documento" class="form-label">Documento *</label>
-                        <input type="text" inputmode="numeric" class="form-control" id="signin-input-documento" maxlength="14" name="documento" OnKeyPress="formatar('###.###.###-##',this)" />
+                        <input type="text" inputmode="numeric" class="form-control" pattern="[0-9]+" id="signin-input-documento" maxlength="14" name="documento" OnKeyPress="formatar('###.###.###-##',this)" />
                     </div>
                     <div class="row justify-content-center">
                         <div class="col mb-3 col-7">

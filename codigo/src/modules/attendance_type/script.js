@@ -41,7 +41,7 @@ async function checkAuth(ev, attendance_type) {
                 break;
             case 'EXAME':
             case 'ENCAMINHAMENTO':
-                await doc.set({ type: attendance_type, user: currentUser.user.uid, step: "ENVIO_DE_DOCUMENTOS" })
+                await doc.set({ type: attendance_type, user: currentUser.user.uid, step: "ENVIO_DE_DOCUMENTOS", })
                 localStorage.setItem('@AGENDAI.CONSULTA', doc.id)
                 window.location.replace("/codigo/src/modules/envio_documentos/");
                 break;
