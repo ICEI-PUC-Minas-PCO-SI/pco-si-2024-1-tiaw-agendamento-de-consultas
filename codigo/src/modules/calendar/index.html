@@ -7,6 +7,14 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="calendar.css">
     <script src="https://kit.fontawesome.com/ae561a7f3d.js" crossorigin="anonymous"></script>
+    <script defer type="module" src="calendar.js"></script>
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
+    <script src="../../config/firebase.js"></script>
 </head>
 <body class="bg-body-secondary mt-5">
     <div class="container">
@@ -18,9 +26,9 @@
 
         <div class="row d-grid justify-content-center">
             <div class="col">
-                <button class="fs-1 border-0 bg-transparent" onclick="changeMonth(-1)"><i class="fa-solid fa-angles-left"></i></button>
+                <button id="changeMonthDown" class="fs-1 border-0 bg-transparent"><i class="fa-solid fa-angles-left"></i></button>
                 <span id="date-display" class="fs-1 fw-bold ms-3 me-3"></span>
-                <button class="fs-1 border-0 bg-transparent" onclick="changeMonth(1)"><i class="fa-solid fa-angles-right"></i></button>
+                <button id="changeMonthUp" class="fs-1 border-0 bg-transparent"><i class="fa-solid fa-angles-right"></i></button>
             </div>
         </div>
 
@@ -51,11 +59,10 @@
 
         <div class="row">
             <div class="col d-flex justify-content-center">
-                <button type="button" id="advance" onclick="scheduleAppointment()" class="button w-100 text-white p-1 border-0">Avançar</button>
+                <button type="button" id="advance" class="button w-100 text-white p-1 border-0">Avançar</button>
             </div>
         </div>
 
-    <script src="calendar.js"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

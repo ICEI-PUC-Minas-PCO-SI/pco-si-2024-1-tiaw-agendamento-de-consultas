@@ -14,6 +14,7 @@ var hospitalFilter = ''
 var hasEspecialitie = false
 
 var userList = []
+var professionalIdByName = {}
 var db = firebase.firestore()
 await db.collection("user_data").where("admin", "==", true).get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
@@ -21,7 +22,11 @@ await db.collection("user_data").where("admin", "==", true).get().then((querySna
             ...doc.data(),
             id: doc.id
         }
+        let userName = user.first_name.toLowerCase()+" "+user.last_name.toLowerCase()
         userList.push(user)
+        if(!professionalIdByName[userName]){
+            professionalIdByName[userName] = user.id
+        }
     });
 });
 var userNameList = userList.map((user)=>{return user.first_name+" "+user.last_name})
@@ -82,11 +87,14 @@ buttonAvancar.addEventListener("click", event => {
     }
     if(selectEspecialidades.value != '' && selectClinicaHospital.value != '' && tipoConsulta != '') {
         let consult = localStorage.getItem("@AGENDAI.CONSULTA")
+        console.log(professionalIdByName)
+        console.log(selectProfissional.value)
         db.collection("consultas").doc(consult).update({
             tipo: tipoConsulta,
             especialidade: selectEspecialidades.value,
             local: selectClinicaHospital.value,
-            profissional: selectProfissional.value
+            profissional: professionalIdByName[selectProfissional.value],
+            step: "AGENDAR CONSULTA"
         }).then(()=>{
             window.location.replace('/codigo/src/modules/envio_documentos')
         }).catch((error) => {

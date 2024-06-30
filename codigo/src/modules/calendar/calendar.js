@@ -1,101 +1,60 @@
-class CalendarController {
-    constructor() {
-        this._firebaseConfig = {
-            apiKey: "AIzaSyC950Slq6RoGWoXUA4WU6O4iuQdzX_k-qQ",
-            authDomain: "agendai-84d84.firebaseapp.com",
-            databaseURL: "https://agendai-84d84-default-rtdb.firebaseio.com",
-            projectId: "agendai-84d84",
-            storageBucket: "agendai-84d84.appspot.com",
-            messagingSenderId: "346989741208",
-            appId: "1:346989741208:web:4838f4fc5cc1d1a36abced",
-            measurementId: "G-RET5W0Q8SL"
-          };
-    }
-    /**
-     * Atualiza data da consulta
-     * @param {data} data 
-     */
-    updateUserData = async ({ data } = {}) => {
-        try {
-
-            if (firebase.apps.length == 0) {
-                await firebase.initializeApp(this._firebaseConfig);
-            }
-            const currentUser = JSON.parse(localStorage.getItem('credential'));
-            const ref = await firebase.firestore().collection("user_data").doc(id).update({
-                "first_name": firstName,
-                "last_name": lastName,
-                "phone": phone,
-                "full_address": `${address}, ${number}${complement ? `,${complement}` : ""},${city},${state}`,
-                "parent_name": parentName,
-                "parent_document": parentDocument,
-            });
-            return true
-        } catch (error) {
-            return false;
-            console.log(error);
-        }
-    }
-    signUp = async ({ email, password, firstName, lastName, phone, document, addres, number, complement, city, state, parentName, parentDocument } = {}) => {
-        try {
-            if (firebase.apps.length == 0) {
-                await firebase.initializeApp(this._firebaseConfig);
-            }
-            const credential = await firebase.auth().createUserWithEmailAndPassword(email, password);
-            const ref = await firebase.firestore().collection("user_data").doc(credential.user.uid).set({
-                "id": credential.user.uid,
-                "email": email,
-                "first_name": firstName,
-                "last_name": lastName,
-                "phone": phone,
-                "document": document,
-                "full_address": `${addres}, ${number}${complement ? `,${complement}` : ""},${city},${state}`,
-                "parent_name": parentName,
-                "parent_document": parentDocument,
-            });
-            return true;
-        } catch (error) {
-            return false;
-            console.log(error);
-        }
-    }
-
-    async getUser(id) {
-        try {
-            if (firebase.apps.length == 0) {
-                await firebase.initializeApp(this._firebaseConfig);
-            }
-            const user = await firebase.firestore().collection('user_data').doc(id).get()
-            if (user.exists) {
-                return user;
-            } else {
-                return null;
-            }
-        } catch (err) {
-            console.log(err);
-            return null;
-        }
-    }
-}
-
-
-
-
-
 let daysElement = document.querySelector('#number-days');
 let hoursElement = document.querySelector('#days-hours');
 let dateDisplay = document.getElementById('date-display')
 
+document.getElementById("changeMonthDown").addEventListener('click', event =>{
+    changeMonth(-1);
+})
+document.getElementById("changeMonthUp").addEventListener('click', event =>{
+    changeMonth(1);
+})
+document.getElementById("advance").addEventListener('click', event =>{
+    scheduleAppointment();
+})
+
 var now = new Date()
+var visibleDate = new Date()
 var date = new Date(2000, 1, 1, 0)
 var hourElements = []
 
-dateDisplay.innerHTML = (now.getMonth()+1)+", "+now.getFullYear()
-createCalendarDays(now);
+var db = firebase.firestore()
+var consulta = localStorage.getItem("@AGENDAI.CONSULTA")
+var hopsital ={}
+var professionals = []
+var ocupiedDates = []
+
+await db.collection("consultas").doc(consulta).get().then(response =>{
+    consulta = {
+        ...response.data(),
+        id: response.id
+    }
+})
+
+await db.collection("consultas").where("date", ">=", visibleDate).get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+        let data = {
+            ...doc.data(),
+            id: doc.id
+        }
+        ocupiedDates.push(data)
+    });
+});
+
+await db.collection("user_data").where("admin", "==", true).get().then(response=>{
+    response.forEach(data=>{
+        let professional = {...data.data(), id: data.id}
+        if(professional.hospital.toLowerCase() == consulta.local && professional.especialidade == consulta.especialidade){
+            professionals.push(professional)
+        }
+    })
+})
+
+dateDisplay.innerHTML = (visibleDate.getMonth()+1)+", "+visibleDate.getFullYear()
+createCalendarDays(visibleDate);
 
 function createCalendarDays(){
     //cria datas vazias no comeco do mes
-    let monthFirstWeakDay = new Date(now.getFullYear(), now.getMonth(), 1).getDay()
+    let monthFirstWeakDay = new Date(visibleDate.getFullYear(), visibleDate.getMonth(), 1).getDay()
     let counter = 0 // 0, valor de domingo no Date.getDay()
     while(counter != monthFirstWeakDay){
         let elem = document.createElement("label")
@@ -104,7 +63,6 @@ function createCalendarDays(){
         elem.style.width = "14.2%"
         elem.style.margin = "8px 0"
         daysElement.insertAdjacentElement('beforeend', elem)
-        //daysElement.innerHTML += '<label class=\'day\'></label>';
         counter++
         if(counter > 6){ //se depois de sabado retornar para domingo
             counter = 0;
@@ -112,12 +70,14 @@ function createCalendarDays(){
     }
     
     //cria datas preenchidas do mes
-    let monthDays = new Date(now.getFullYear(), now.getMonth()+1, 0).getDate()
-    for(i = 1; i <= monthDays; i++) {
+    let monthDays = new Date(visibleDate.getFullYear(), visibleDate.getMonth()+1, 0).getDate()
+    for(let i = 1; i <= monthDays; i++) {
         let elem = document.createElement("label")
         elem.setAttribute("id", "day"+i)
         elem.setAttribute("class", "day")
-        elem.setAttribute("onclick", "setDate("+i+")")
+        elem.addEventListener("click", event =>{
+            setDate(i);
+        })
         elem.style.fontSize = "18px"
         elem.style.textAlign = "center"
         elem.style.display = "inline-block"
@@ -146,8 +106,8 @@ function setDate(day){
             return
         }
     }
-    date = new Date(now.getFullYear(), now.getMonth(), day)
-    document.getElementsByClassName('selected')[0]?.setAttribute('class', '')
+    date = new Date(visibleDate.getFullYear(), visibleDate.getMonth(), day)
+    document.getElementsByClassName('selected')[0]?.setAttribute('class', 'day')
     document.getElementsByClassName('selectedButton')[0]?.setAttribute('class', '')
     date.setHours(0)
     document.getElementById('day'+day).setAttribute('class', 'selected')
@@ -162,10 +122,12 @@ function clearHours(){
 }
 
 function createHours(){
-    for(i = 8; i<=21; i++){
+    for(let i = 8; i<=21; i++){
         let elem = document.createElement("button")
         elem.setAttribute("id", "hour"+i)
-        elem.setAttribute("onclick", "setHour("+i+")")
+        elem.addEventListener("click", event =>{
+            setHour(i)
+        })
         elem.style.padding = "5px"
         elem.style.backgroundColor = "#5621ea"
         elem.style.borderRadius = "5px"
@@ -198,31 +160,31 @@ function scheduleAppointment(){
     }
     let schedule = {}
     schedule.date = date
-    schedule.paciente = '1'
-    schedule.profissional = '2'
-    let storage = JSON.parse(localStorage.getItem("schedule"))
-    if(storage == null){
-        localStorage.setItem("schedule", JSON.stringify([schedule]))
-        alert("Consulta agendada com sucesso!")
-    }else{
-        if(canSchedule(storage, schedule) == 0){
-            storage.push(schedule)
-            localStorage.setItem("schedule", JSON.stringify(storage))
-            alert("Consulta agendada com sucesso!")
-        }else{
-            alert("Horario de "+date.getHours()+"h indisponivel para o dia "+date.getDate()+". Favor selecionar um outro horario.")
+    let hasSuceed = false
+    for (let index = 0; index < professionals.length; index++) {
+        const element = professionals[index];
+        schedule.profissional = consulta.profissional ? consulta.profissional : element.id
+        if(canSchedule(schedule)){
+            db.collection("consultas").doc(consulta.id).update(schedule).then(()=>{
+                alert("Consulta agendada com sucesso!")
+                window.location.replace("/codigo/src/modules/rating")
+            })
+            hasSuceed = true
         }
+    }
+    if(!hasSuceed){
+        alert("Horario de "+date.getHours()+"h indisponivel para o dia "+date.getDate()+". Favor selecionar um outro horario.")
     }
 }
 
-function canSchedule(storage, schedule) {
-    let profissionalSchedule = storage.filter((element) => element.profissional == schedule.profissional)
-    let alreadyScheduled = profissionalSchedule.find((element) => {
-        let date1 = new Date(element.date).getTime()
+function canSchedule(schedule) {
+    let profissionalSchedule = ocupiedDates.filter(consult => consult.profissional == schedule.profissional)
+    let alreadyScheduled = profissionalSchedule.some((element) => {
+        let date1 = element.date.toDate().getTime()
         let date2 = new Date(schedule.date).getTime()
         return date1 == date2
     })
-    return alreadyScheduled ? 1 : 0
+    return alreadyScheduled ? false : true
 }
 
 function changeMonth(number){
@@ -232,12 +194,12 @@ function changeMonth(number){
             return
         }
     }
-    now.addMonths(number)
+    visibleDate.addMonths(number)
     date = new Date(2000, 1, 1, 0)
     clearHours()
     clearCalendarDays()
-    createCalendarDays(now)
-    dateDisplay.innerHTML = (now.getMonth()+1)+", "+now.getFullYear()
+    createCalendarDays(visibleDate)
+    dateDisplay.innerHTML = (visibleDate.getMonth()+1)+", "+visibleDate.getFullYear()
 }
 
 Date.prototype.addMonths = function(months) {
