@@ -22,7 +22,7 @@
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
     <script src="../../config/firebase.js"></script>
 
@@ -67,6 +67,10 @@
     </div>
 
     <script>
+        window.onload = () => {
+
+        }
+
         $('#cleanButton').on('click', () => {
             data.carteirinha = null;
             data.pedidos = []
@@ -81,6 +85,21 @@
 
         $("#submitButton").on("click", async (submit) => {
             try {
+                let _firebaseConfig = {
+                    apiKey: "AIzaSyC950Slq6RoGWoXUA4WU6O4iuQdzX_k-qQ",
+                    authDomain: "agendai-84d84.firebaseapp.com",
+                    databaseURL: "https://agendai-84d84-default-rtdb.firebaseio.com",
+                    projectId: "agendai-84d84",
+                    storageBucket: "agendai-84d84.appspot.com",
+                    messagingSenderId: "346989741208",
+                    appId: "1:346989741208:web:4838f4fc5cc1d1a36abced",
+                    measurementId: "G-RET5W0Q8SL"
+                };
+                if (firebase.apps.length <= 0) {
+                    const result = await firebase.initializeApp(_firebaseConfig);
+                    console.log(result)
+                }
+
                 var metadata = {
                     ContentType: data.carteirinha.type,
                 };
@@ -88,22 +107,26 @@
                     .put(data.carteirinha, metadata);
                 console.log(carteirinha);
                 let refPedidos = []
-                for (let file in data.pedidos) {
+                for (let file of data.pedidos) {
                     metadata = {
                         ContentType: file.type,
                     }
-                    const pedido = await firebase.storage().ref("pedidos").child(file.name)
+                    const pedido = await firebase.storage().ref('pedidos').child(file.name)
                         .put(file, metadata);
                     refPedidos.push(pedido);
                 }
-                const doc = await firebase.firestore().collection('consultas').doc(localStorage.getItem("@AGENDAI.CONSULTA")).update({
-
-                })
-                if (!doc) {
-                    throw 'Erro ao criar documento';
+                const consulta = localStorage.getItem("@AGENDAI.CONSULTA");
+                if (consulta) {
+                    const pedidos = refPedidos.map((e) => e.ref);
+                    const doc = await firebase.firestore().collection('consultas').doc(consulta).update({
+                        'carteirinha': `gs://agendai-84d84.appspot.com/carteirinhas/${data.carteirinha.name}`,
+                        'pedidos': data.pedidos.map((e) => `gs://agendai-84d84.appspot.com/pedidos/${e.name}`),
+                    })
+                    window.location.replace("/codigo/src/modules/calendar")
                 }
             } catch (e) {
-                console.log(e);
+                console.error(e);
+                window.alert('Erro ao enviar os arquivos tente novamente!')
             }
         });
 
