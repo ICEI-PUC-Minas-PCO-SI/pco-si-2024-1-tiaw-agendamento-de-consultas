@@ -13,6 +13,14 @@
         crossorigin="anonymous"></script>
     
     <link rel="stylesheet" href="horarios.css">
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
+    <script src="../../../config/firebase.js"></script>
+
 </head>
 <body class="bg-body-secondary d-flex">
     
@@ -21,25 +29,25 @@
             <div id="cardBody" class="card-body">
                 <div class="row">
                     <div class="col d-flex justify-content-center">
-                        <h4>Selecine um paciente</h4>
+                        <h4>Selecione um paciente</h4>
                     </div>
                 </div>
                 <!--Campo de horarios e nomes-->
                 
-
+                
                 <!--Botão iniciar-->
                 
             </div>
         </div>
-
+        
         <div id="campoIniciar" class="row mt-5">
             <div class="col d-flex justify-content-center">
                 <button id="btnIniciar" class="m-0 p-2">Iniciar</button>
             </div>
         </div>
-
+        
     </div>
-
-    <script src="horarios.js"></script>
+    
+    <script type="module" src="horarios.js"></script>
 </body>
 </html>

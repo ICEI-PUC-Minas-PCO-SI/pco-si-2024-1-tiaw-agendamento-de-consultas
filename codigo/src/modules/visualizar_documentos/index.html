@@ -1,51 +1,63 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="view_documents.css">
     <script src="https://kit.fontawesome.com/ae561a7f3d.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
+    <script src="../../config/firebase.js"></script>
+    <title>Agendaí</title>
 </head>
-<body class="bg-body-secondary mt-5">
-    <div class="container d-grid w-100">
-        <div class="row mb-3">
-            <div class="col d-flex justify-content-center text-center">
-                <h3>SELECIONE UMA VISUALIZAÇÃO</h3>
+
+<body class="container vertical-center text-center mt-5">
+
+
+    <div class="container vertical-center text-center mt-5">
+        <h1>SELECIONE UMA VISUALIZAÇÃO</h1>
+        <div class="row row-cols-sm-1 row-cols-md-2 mt-5 mb-5">
+            <div class="col" id="btn-enviar-carteirinha">
+                <form id="patient-data" class="card m-2" style="height: 20rem;  align-content: center; display: block;">
+                    <div  class="card-body">
+                        <h2>CARTEIRINHA</h2>
+                        <p>Arquivos enviados (<span id="count-patient-data">0</span>)</p>
+                        <div id="preview-images-carteirinha" class="div-preview-images"></div>
+                    </div>
+                </form>
+            </div>
+            <div class="col" id="btn-enviar-pedidos">
+                <form id="request-data" class="card m-2" style="height: 20rem;  align-content: center; display: block;">
+                    <div class="card-body">
+                        <h2>ENVIAR PEDIDO MÉDICO</h2>
+                        <p>Arquivos enviados (<span id="count-request-data">0</span>)</p>
+                    </div>
+                </form>
             </div>
         </div>
 
-        <!-- Inicio visualizacao de arquivos -->
-        <div class="row justify-content-center mb-5">
-            <div id="container-files" class="row border border-dark justify-content-around align-items-center">
-                <div id="patient-data" class="col-5 h-50 text-center d-grid align-items-center border border-dark" onclick="dadosPaciente()">
-                    <span class="">
-                        <p>VISUALIZAR DADOS PACIENTE</p>
-                        <p>Arquivos enviados(<span id="count-patient-data"></span>)</p>
-                    </span>
-                </div>
-                <div id="request-data" class="col-5 h-50 text-center d-grid align-items-center border border-dark" onclick="dadosPedido()">
-                    <span class="">
-                        <p>VISUALIZAR PEDIDO</p>
-                        <p>Arquivos enviados(<span id="count-request-data"></span>)</p>
-                    </span>
-                </div>
-            </div>
+        <div class="d-flex align-items-center row justify-content-center">
+            <button id="finalize" class="col col-sm-2 col-md-5 btn btn-block mx-4 text-white w-100">
+                FINALIZAR ATENDIMENTO
+            </button>
+            
         </div>
-        <!-- Fim visualizacao de arquivos -->
 
-        <div class="row">
-            <div class="col d-flex justify-content-center">
-                <button type="button" id="finalize" onclick="finalize()" class="button w-100 text-white p-1 border-0">Finalizar Atendimento</button>
-            </div>
-        </div>
     </div>
-
-    <script src="view_documents.js"></script>
     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+
+    <script src="view_documents.js" type="module"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
+
 </html>

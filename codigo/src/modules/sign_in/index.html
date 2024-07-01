@@ -40,12 +40,12 @@
         <div class="container">
             <h1 class="h1 text-center mb-5  ">DADOS PESSOAIS</h1>
             <div class="row justify-content-center">
-                <form class="col col-lg-4 mb-5 " id="loginform" name="loginform" action="#" onsubmit="return validateForm()" method="post">
+                <form class="col col-lg-8 col-md-6 mb-5 " id="loginform" name="loginform" action="#" onsubmit="return validateForm()" method="post">
                     <div class="col mb-3">
                         <label for="signin-input-nome" class="form-label">Nome *</label>
                         <input type="text" class="form-control" id="signin-input-nome" name="nome" />
                     </div>
-                    <div class="col mb-3">
+                    <div class="col mb-3 ">
                         <label for="signin-input-sobrenome" class="form-label">Sobrenome *</label>
                         <input type="text" class="form-control" id="signin-input-sobrenome" name="sobrenome" />
                     </div>
@@ -67,7 +67,7 @@
                     </div>
                     <div class="col mb-3">
                         <label for="signin-input-documento" class="form-label">Documento *</label>
-                        <input type="text" inputmode="numeric" class="form-control" id="signin-input-documento" maxlength="14" name="documento" OnKeyPress="formatar('###.###.###-##',this)" />
+                        <input type="text" inputmode="numeric" class="form-control" pattern="[0-9]+" id="signin-input-documento" maxlength="14" name="documento" OnKeyPress="formatar('###.###.###-##',this)" />
                     </div>
                     <div class="row justify-content-center">
                         <div class="col mb-3 col-7">

@@ -1,10 +1,8 @@
-// import { } from "https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js";
-// import { } from "https://www.gstatic.com/firebasejs/6.3.5/firebase-firestore.js";
-// import { } from "https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyC950Slq6RoGWoXUA4WU6O4iuQdzX_k-qQ",
   authDomain: "agendai-84d84.firebaseapp.com",
+  databaseURL: "https://agendai-84d84-default-rtdb.firebaseio.com",
   projectId: "agendai-84d84",
   storageBucket: "agendai-84d84.appspot.com",
   messagingSenderId: "346989741208",
@@ -16,6 +14,4 @@ firebase.initializeApp(firebaseConfig);
 
 
 
-
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
+// export default firebase

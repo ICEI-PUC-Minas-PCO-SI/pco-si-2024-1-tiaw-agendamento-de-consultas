@@ -119,7 +119,6 @@ async function saveData(id) {
  *  */
 async function fillInput(userdata) {
 
-    console.log(userdata);
     if (userdata.document) {
         documentoEC.value = userdata.document;
     }
@@ -167,7 +166,7 @@ function init() {
     if (id) {
         switchEnabledFields(false);
 
-        signInButton.addEventListener('click', (event)=>{
+        signInButton.addEventListener('click', (event) => {
             event.preventDefault();
             window.location.replace("/codigo/src/modules/attendance_type");
         })
@@ -201,7 +200,7 @@ function init() {
         })
     }
 }
-
+const originalBorderColor = emailEC.style.borderColor;
 
 /**
  * Faz a verificação dos campos e chama a classe que resolve a request de registro do usuário
@@ -211,96 +210,57 @@ function init() {
 async function register(event) {
     event.preventDefault();
 
+    let hasError = false;
+
     if (nameEC.value.trim() == "") {
         nameEC.required = true;
         alert.hidden = false;
-        return;
+        hasError = true;
     }
     if (lastNameEC.value.trim() == "") {
         lastNameEC.required = true;
         alert.hidden = false;
-        return;
+        hasError = true;
     }
-    const emailBorderColor = emailEC.style.borderColor;
-    if (emailEC.value.trim() == "") {
-        emailEC.required = true;
-        alert.innerText = "Email obrigatório!";
-        alert.hidden = false;
-        return;
-    } else {
-        if ((!emailEC.value.trim().includes("@")) || (!emailEC.value.trim().includes("."))) {
-            alert.innerText = "E-mail inválido!";
-            emailEC.style.borderColor = "red";
-            alert.hidden = false;
-            return;
-        } else {
-            alert.innerText = "E-mail inválido!";
-            emailEC.style.borderColor = emailBorderColor;
-            alert.hidden = true;
-        }
-    }
-    if (passwordEC.value.trim() == "") {
-        alert.innerText = "Preencha a senha!";
-        alert.hidden = false;
-        passwordEC.required = true;
-        return;
-    }
-    if (passwordEC.value.trim().length <= 6) {
-        alert.innerText = "Senha muito curta!";
-        alert.hidden = false;
-        passwordEC.required = true;
-        return;
-    }
-    if (passwordEC.value.trim() != confirmpasswordEC.value.trim()) {
-        alert.innerText = "As senhas não coincidem!";
-        confirmpasswordEC.style.borderColor = "red";
-        alert.hidden = false;
-        return;
-    } else {
-        confirmpasswordEC.style.borderColor = emailBorderColor;
-    }
+
+
     if (phoneEC.value.trim() == "") {
         phoneEC.required = true;
         alert.hidden = false;
         alert.innerText = "Preencha todos os dados!"
-        return;
+        hasError = true;
+
     }
-    if (documentoEC.value.trim() == "") {
-        documentoEC.required = true;
-        alert.hidden = false;
-        alert.innerText = "Documento inválido"
-        return;
-    } else {
-        if (documentoEC.value.trim().match("/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/")) {
-            alert.innerText = "Documento inválido"
-            documentoEC.required = true;
-            alert.hidden = false;
-        }
-    }
+
     if (addressStreetEC.value.trim() == "") {
         addressStreetEC.required = true;
         alert.hidden = false;
         alert.innerText = "Preencha todos os dados!"
-        return;
+        hasError = true;
+
     }
     if (numberEC.value.trim() == "") {
         numberEC.required = true;
         alert.hidden = false;
         alert.innerText = "Preencha todos os dados!"
-        return;
+        hasError = true;
+
     }
     if (cityEC.value.trim() == "") {
         cityEC.required = true;
         alert.hidden = false;
         alert.innerText = "Preencha todos os dados!"
-        return;
+        hasError = true;
+
     }
     if (stateEC.value.trim() == "") {
         stateEC.required = true;
         alert.hidden = false;
         alert.innerText = "Preencha todos os dados!"
-        return;
+        hasError = true;
     }
+
+
     const nomeResponsavel = responsavelEC.value.trim();
     const docmentoResponsavel = docResponsavelEC.value.trim();
     if ((nomeResponsavel != "") ^ (docmentoResponsavel != "")) {
@@ -308,12 +268,89 @@ async function register(event) {
         responsavelEC.required = true;
         alert.hidden = false;
         alert.innerText = "Preencha todos os dados!"
-        return;
+        hasError = true;
     } else {
         docResponsavelEC.required = false;
         responsavelEC.required = false;
         alert.hidden = true;
     }
+
+    
+
+
+
+    if ((!emailEC.value) || emailEC.value.trim() == "") {
+        alert.innerText = alert.innerText.length > 0 ? `${alert.innerText}\nEmail obrigatório!` : 'Email obrigatório!';
+        emailEC.required = true;
+        alert.hidden = false;
+        hasError = true;
+
+    } else {
+        if ((!emailEC.value.trim().includes("@")) || (!emailEC.value.trim().includes("."))) {
+            alert.innerText = alert.innerText.length > 0 ? `${alert.innerText}\nE-mail inválido!` : 'E-mail inválido!';
+            emailEC.style.borderColor = "red";
+            alert.hidden = false;
+            hasError = true;
+        } else {
+            emailEC.style.borderColor = originalBorderColor;
+            alert.hidden = true;
+        }
+    }
+
+    if (passwordEC.value.trim() != confirmpasswordEC.value.trim()) {
+        if (alert.innerText.length > 0) {
+
+            alert.innerText += "\nAs senhas não coincidem!";
+        } else {
+
+            alert.innerText = "As senhas não coincidem!";
+        }
+        confirmpasswordEC.style.borderColor = "red";
+        alert.hidden = false;
+        hasError = true;
+
+    } else {
+        confirmpasswordEC.style.borderColor = originalBorderColor;
+    }
+
+
+    if (passwordEC.value.trim() == "") {
+        alert.innerText = alert.innerText.length > 0 ? `${alert.innerText}\nPreencha a senha!` : 'Preencha a senha!';
+        alert.hidden = false;
+        passwordEC.required = true;
+        hasError = true;
+
+    }
+    if (passwordEC.value.trim().length <= 6) {
+        alert.innerText = alert.innerText.length > 0 ? `${alert.innerText}\nSenha muito curta!` : 'Senha muito curta!';
+        alert.hidden = false;
+        passwordEC.required = true;
+        hasError = true;
+    }
+
+    if (documentoEC.value.trim() == "") {
+        alert.innerText = alert.innerText.length > 0 ? `${alert.innerText}\n Documento inválido!` : 'Documento inválido!';
+        documentoEC.style.borderColor = 'red';
+        documentoEC.required = true;
+        alert.hidden = false;
+        hasError = true;
+
+    } else {
+        if (!(documentoEC.value.trim().match("([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})"))) {
+            alert.innerText = alert.innerText.length > 0 ? `${alert.innerText}\nDocumento inválido!` : 'Documento inválido!';
+            documentoEC.required = true;
+            documentoEC.style.borderColor = 'red';
+            alert.hidden = false;
+            hasError = true;
+        } else {
+            documentoEC.style.borderColor = originalBorderColor;
+        }
+    }
+
+    if (hasError) {
+        alert.hidden = false;
+        return;
+    };
     signInButton.setAttribute("disabled", true);
     const result = await signincontroller.signUp({
         email: emailEC.value.trim(),
