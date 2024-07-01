@@ -35,13 +35,13 @@ async function checkAuth(ev, attendance_type) {
 
         switch (attendance_type) {
             case 'CONSULTA':
-                await doc.set({ type: attendance_type, user: currentUser.user.uid, step: "AGENDAMENTO_SEM_ENCAMINHAMENTO" })
+                await doc.set({ type: attendance_type, user: currentUser.user.uid, step: "AGENDAMENTO_SEM_ENCAMINHAMENTO", finalized: false })
                 localStorage.setItem('@AGENDAI.CONSULTA', doc.id)
                 window.location.replace("/codigo/src/modules/agendamento_sem_encaminhamento/");
                 break;
             case 'EXAME':
             case 'ENCAMINHAMENTO':
-                await doc.set({ type: attendance_type, user: currentUser.user.uid, step: "ENVIO_DE_DOCUMENTOS", })
+                await doc.set({ type: attendance_type, user: currentUser.user.uid, step: "ENVIO_DE_DOCUMENTOS", finalized: false })
                 localStorage.setItem('@AGENDAI.CONSULTA', doc.id)
                 window.location.replace("/codigo/src/modules/envio_documentos/");
                 break;
