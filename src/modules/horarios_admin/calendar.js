@@ -75,11 +75,11 @@ function scheduleAppointment(){
             location.reload();
         }
         if(confirmar) {
-            window.location.replace(`horarios/horarios.html?date=${date}`);
+            window.location.replace(`./horarios/horarios.html?date=${date}`);
         }
     }
     else {
-        window.location.replace(`horarios/horarios.html?date=${date}`);
+        window.location.replace(`./horarios/horarios.html?date=${date}`);
     }
 };
 

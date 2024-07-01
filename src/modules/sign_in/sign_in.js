@@ -168,7 +168,7 @@ function init() {
 
         signInButton.addEventListener('click', (event) => {
             event.preventDefault();
-            window.location.replace("/src/modules/attendance_type");
+            window.location.replace("./../attendance_type");
         })
 
         editDiv.hidden = false;
@@ -369,7 +369,7 @@ async function register(event) {
     });
 
     if (result) {
-        window.location.replace("/src/modules/login");
+        window.location.replace("./../login");
     }
     signInButton.setAttribute("disabled", false);
 }

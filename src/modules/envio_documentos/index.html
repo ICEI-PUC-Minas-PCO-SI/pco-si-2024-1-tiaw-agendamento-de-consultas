@@ -122,7 +122,7 @@
                         'carteirinha': `gs://agendai-84d84.appspot.com/carteirinhas/${data.carteirinha.name}`,
                         'pedidos': data.pedidos.map((e) => `gs://agendai-84d84.appspot.com/pedidos/${e.name}`),
                     })
-                    window.location.replace("/src/modules/calendar")
+                    window.location.replace("./../calendar")
                 }
             } catch (e) {
                 console.error(e);

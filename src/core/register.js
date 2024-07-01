@@ -1,5 +1,5 @@
-import {firestore} from "/src/config/firebase.js";
-import {UserModel, AddressModel } from "/src/core/model/user_model.js";
+import {firestore} from "./src/config/firebase.js";
+import {UserModel, AddressModel } from "./src/core/model/user_model.js";
 
 export class Register {
     constructor(){}

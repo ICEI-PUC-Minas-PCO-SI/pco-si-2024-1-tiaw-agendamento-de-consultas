@@ -1,3 +1,3 @@
 function goToWelcomePage(){
-    window.location.replace("/src/modules/welcome");
+    window.location.replace("./src/modules/welcome");
 }

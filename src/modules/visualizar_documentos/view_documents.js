@@ -6,7 +6,7 @@ const id_consulta = url.get('consulta');
 
 let refConsulta = await firebase.firestore().collection('consultas').doc(id_consulta).get()
 if (!refConsulta.exists) {
-    window.location.replace('/src/modules/horarios_admin')
+    window.location.replace('./../horarios_admin')
 }
 const dataConsulta = await refConsulta.data();
 const carteirinhaUrl = dataConsulta.carteirinha;
@@ -30,7 +30,7 @@ $('#finalize').on('click', async () => {
         await firebase.firestore().collection('consultas').doc(id_consulta).update({
             finalized: true,
         });
-        window.location.replace('/src/modules/horarios_admin');
+        window.location.replace('./../horarios_admin');
     } catch (error) {
         alert(`Erro ao atualizar a consulta`)
     }

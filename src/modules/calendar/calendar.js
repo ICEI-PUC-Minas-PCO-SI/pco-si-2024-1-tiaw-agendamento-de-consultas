@@ -167,7 +167,7 @@ function scheduleAppointment() {
         if (canSchedule(schedule)) {
             db.collection("consultas").doc(consulta.id).update(schedule).then(() => {
                 alert("Consulta agendada com sucesso!");
-                window.location.replace("/src/modules/rating");
+                window.location.replace("./../rating");
             });
             hasSuceed = true;
             break;

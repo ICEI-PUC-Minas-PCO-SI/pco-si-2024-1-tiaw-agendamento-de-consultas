@@ -126,7 +126,7 @@ btnIniciar.addEventListener('click', () => {
     let inputRadio = document.querySelector('input[name="hora"]:checked');
 
     if (inputRadio) {
-        window.location.replace(`/src/modules/visualizar_documentos/index.html?consulta=${consultaId}`);
+        window.location.replace(`./../../visualizar_documentos/index.html?consulta=${consultaId}`);
     } else {
         alert("Nenhum paciente selecionado! Selecione para prosseguirmos.");
         return;

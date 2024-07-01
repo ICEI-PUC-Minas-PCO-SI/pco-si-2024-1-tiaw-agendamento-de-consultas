@@ -37,13 +37,13 @@ async function checkAuth(ev, attendance_type) {
             case 'CONSULTA':
                 await doc.set({ type: attendance_type, user: currentUser.user.uid, step: "AGENDAMENTO_SEM_ENCAMINHAMENTO", finalized: false })
                 localStorage.setItem('@AGENDAI.CONSULTA', doc.id)
-                window.location.replace("/src/modules/agendamento_sem_encaminhamento/");
+                window.location.replace("./../agendamento_sem_encaminhamento/");
                 break;
             case 'EXAME':
             case 'ENCAMINHAMENTO':
                 await doc.set({ type: attendance_type, user: currentUser.user.uid, step: "ENVIO_DE_DOCUMENTOS", finalized: false })
                 localStorage.setItem('@AGENDAI.CONSULTA', doc.id)
-                window.location.replace("/src/modules/envio_documentos/");
+                window.location.replace("./../envio_documentos/");
                 break;
             default:
         }

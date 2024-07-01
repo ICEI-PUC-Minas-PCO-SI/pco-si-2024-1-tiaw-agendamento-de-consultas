@@ -1,4 +1,4 @@
-import { firestore } from "/src/config/firebase.js";
+import { firestore } from "./src/config/firebase.js";
 
 export class Rating {
 

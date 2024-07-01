@@ -68,9 +68,10 @@ document.getElementById("loginbutton").addEventListener("click", async function 
   let user = await firebase.firestore().collection("user_data").doc(credential.user.uid).get();
   const user_data = user.data()
   if(user_data.admin == true){
-    window.location.replace(`/src/modules/horarios_admin`);
+    window.location.replace(`./../horarios_admin`);
     return;
   }
   //carregar dados usuario
-  window.location.replace(`/src/modules/sign_in/?id=${credential.user.uid}`);
+  // window.location.replace(`/src/modules/sign_in/?id=${credential.user.uid}`);
+  window.location.replace(`./../sign_in/?id=${credential.user.uid}`);
 });
