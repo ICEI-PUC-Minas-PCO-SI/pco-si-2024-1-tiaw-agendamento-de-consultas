@@ -72,6 +72,5 @@ document.getElementById("loginbutton").addEventListener("click", async function 
     return;
   }
   //carregar dados usuario
-  // window.location.replace(`/src/modules/sign_in/?id=${credential.user.uid}`);
   window.location.replace(`./../sign_in/?id=${credential.user.uid}`);
 });

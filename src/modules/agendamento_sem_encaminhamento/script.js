@@ -96,7 +96,6 @@ buttonAvancar.addEventListener("click", event => {
             profissional: professionalIdByName[selectProfissional.value],
             step: "AGENDAR CONSULTA"
         }).then(()=>{
-            // window.location.replace('./src/modules/envio_documentos')
             window.location.replace('./../envio_documentos')
         }).catch((error) => {
             console.error("Error updating document: ", error);
