@@ -11,9 +11,7 @@
 ## Participantes
 >
 > Os membros do grupo são:
->
 > - Christian Sena Gomes
-> - Talles Felipe dos Santos Resende
 > - João Pedro Rafael Santos Silva
 > - Kayque dos Santos Almeida
 > - Yuri Zocoli Silva
@@ -23,6 +21,8 @@
 # Estrutura do Documento
 
 - [Informações do Projeto](#informações-do-projeto)
+  - [Agendaí](#agendaí)
+    - [Sistemas de Informação](#sistemas-de-informação)
   - [Participantes](#participantes)
 - [Estrutura do Documento](#estrutura-do-documento)
 - [Introdução](#introdução)
@@ -30,8 +30,19 @@
   - [Objetivos](#objetivos)
   - [Justificativa](#justificativa)
   - [Público-Alvo](#público-alvo)
-- [Especificações do Projeto](#especificações-do-projeto)
+    - [Pacientes](#pacientes)
+    - [Profissionais de Saúde (Médicos, Enfermeiros, e outros)](#profissionais-de-saúde-médicos-enfermeiros-e-outros)
+    - [Administradores de Clínicas e Hospitais](#administradores-de-clínicas-e-hospitais)
+    - [Equipe de Suporte Técnico](#equipe-de-suporte-técnico)
+    - [Famílias e Cuidadores](#famílias-e-cuidadores)
+  - [Especificações do Projeto](#especificações-do-projeto)
   - [Personas e Mapas de Empatia](#personas-e-mapas-de-empatia)
+      - [**Marcelo Ferraz**](#marcelo-ferraz)
+  - [](#)
+      - [**Pedro**](#pedro)
+  - [](#-1)
+    - [**Marina**](#marina)
+    - [**Josefa**](#josefa)
   - [Histórias de Usuários](#histórias-de-usuários)
   - [Requisitos](#requisitos)
     - [Requisitos Funcionais](#requisitos-funcionais)
@@ -40,10 +51,35 @@
 - [Projeto de Interface](#projeto-de-interface)
   - [User Flow](#user-flow)
   - [Wireframes](#wireframes)
+    - [Fluxo Agendamento](#fluxo-agendamento)
+      - [**Tela inicial**](#tela-inicial)
+      - [**Tela de opção de cadastro ou login**](#tela-de-opção-de-cadastro-ou-login)
+      - [**Tela de login**](#tela-de-login)
+      - [**Tela de cadastro de Usuário**](#tela-de-cadastro-de-usuário)
+      - [**Validação dos dados**](#validação-dos-dados)
+      - [**Seleção do tipo de atendimento**](#seleção-do-tipo-de-atendimento)
+      - [**Envio de documentos**](#envio-de-documentos)
+      - [**Agendar consulta sem encaminhamento**](#agendar-consulta-sem-encaminhamento)
+      - [**Horários disponíveis**](#horários-disponíveis)
+      - [**Avaliação**](#avaliação)
+    - [Fluxo Clinica/Médico](#fluxo-clinicamédico)
+      - [**Avaliação**](#avaliação-1)
 - [Metodologia](#metodologia)
   - [Divisão de Papéis](#divisão-de-papéis)
   - [Ferramentas](#ferramentas)
   - [Controle de Versão](#controle-de-versão)
+- [Projeto da Solução](#projeto-da-solução)
+  - [Tecnologias Utilizadas](#tecnologias-utilizadas)
+  - [Arquitetura da solução](#arquitetura-da-solução)
+      - [1. Navegador:](#1-navegador)
+      - [2. Internet:](#2-internet)
+      - [Integração:](#integração)
+- [Avaliação da Aplicação](#avaliação-da-aplicação)
+- [Cenários de Testes](#cenários-de-testes)
+  - [Plano de Testes](#plano-de-testes)
+  - [Ferramentas de Testes (Opcional)](#ferramentas-de-testes-opcional)
+  - [Registros de Testes](#registros-de-testes)
+- [Referências](#referências)
 <!-- - [**############## SPRINT 1 ACABA AQUI #############**](#-sprint-1-acaba-aqui-)
 - [Projeto da Solução](#projeto-da-solução)
   - [Tecnologias Utilizadas](#tecnologias-utilizadas)
@@ -483,17 +519,129 @@ gitGraph
   
 ```
 
-<!--
-# **############## SPRINT 1 ACABA AQUI #############**
 # Projeto da Solução
 
-......  COLOQUE AQUI O SEU TEXTO ......
+Esse projeto foi feito com o objetivo de criar uma plataforma acesssível tanto do computador quanto do celular para a marcação de consultas pelos pacientes e a gerência de consultas por parte dos médicos onde quer que eles estejam de forma rápida e simples.
 
 ## Tecnologias Utilizadas
 
-......  COLOQUE AQUI O SEU TEXTO ......
+Abaixo estão as tecnologias e ferramentas utilizadas no desenvolvimento do Agendaí:
 
-> Descreva aqui qual(is) tecnologias você vai usar para resolver o seu
+**HTML** - Para estruturar as páginas  
+**CSS** - Para estilizar as páginas  
+**JavaScript** - Para adicionar dinamismo às páginas e acessar outros serviços externos como o Firebase
+**Bootstrap** - Para estilizar as páginas
+**Firebase** - Para armazenamento de dados
+**Visual Studio Code** - Para fazer os códigos em si
+**GitHub Pages** - Para hospedar a aplicação  
+
+![Userflow](images/whimsical.png)  
+
+**Tela Inicial**  
+![](./images/wireframe01.png)  
+Usuário tem as opções de continuar para poder então cadastrar/logar, ou a opção de pedir ajuda
+
+**Tela de boas-vindas**  
+![](./images/wireframe02.png)  
+Botão de cadastro e de login
+
+**Tela de login**  
+![](./images/wireframeLogin.png)  
+Inputs de texto para login(e-mail) e senha e um botão para avançar
+
+**Tela de selecionar data (médico)**  
+![](./images/wireframe11.png)  
+Calendário que, ao clicar em um dia específico, seleciona o dia. Um botão para avançar.
+
+**Tela de horários (médico)**  
+![](./images/wireframe12.png)  
+Exibe os horários de consultas com o nome do paciente ao lado, possibilitando selecionar uma consulta específica de um dia específico.
+
+**Tela de documentos (médico)**  
+![](./images/wireframe14.png)  
+Exibe dois botões, um para ver os dados do paciente e outro para ver o pedido, além disso exibe um botão para finalizar.
+
+**Tela de dados pessoais**  
+![](./images/wireframe04.png)  
+Exibe vários inputs referentes a dados pessoais do usuário, permitindo a alteração/cadastro dos mesmos, exibe também um botão para avançar
+
+**Tela de confirmação de dados pessoais**  
+![](./images/wireframe05.png)  
+Exibe os dados pessoais inseridos anteriormente e dois botões, um para confirmar esses dados e outro para editar os dados.
+
+**Tela de tipo de atendimento**  
+![](./images/wireframe06.png)  
+Exibe três botões, um botão para agendar uma consulta, um botão para agendar um exame e um botão para agendar uma consulta por encaminhamento médico.
+
+**Tela de agendamento de consulta**  
+![](./images/wireframe08.png)  
+Exibe um input para selecionar se a consulta será particular ou via convênio, e inputs para definir a especialidade, clínica/hospital de preferência, e profissional de preferência. Além disso, há um botão para avançar.
+
+**Tela de envio de documentos**  
+![](./images/wireframe07.png)  
+Exibe 1 ou mais botões de envio de documentos, dependendo da solicitação anterior. Sendo 2 para carteirinha e pedido médico, ou 1 só para carteirinha.
+
+**Tela de seleção de data e horário**  
+![](./images/wireframe09.png)  
+Exibe um calendário para a seleção da data desejada para marcar a consulta e botões dinâmicos que mostram os horários disponíveis na data selecionada.
+
+**Tela de avaliação da experiência**  
+![](./images/wireframe10.png)  
+Exibe 5 estrelas clicáveis, para a avaliação da experiência pelo usuário. Possui um botão para finalizar.  
+
+**Interação do usuário com o sistema**  
+![Figura Request](images/request.png)
+
+**Diagrama Userflow**
+```mermaid
+graph TD
+
+TI["`Tela inicial`"] 
+CHAT["`Chat de ajuda da aplicação`"]
+BV["Tela de Boas Vindas"]
+LOGIN["`Já tem cadastro`"]
+CADASTRO["`Cadastrar usuário`"]
+DADOS["Preenchimento dos dados"]
+VALIDACAO["Validação dos dados do usuário"]
+ATEN["Tipo de atendimento"]
+DOCS["`Scaniamento de documentos`"]
+CONS["`Agendar consulta`"]
+CONV["`Envio convenio`"]
+DAT["`Seleção da data e hora`"]
+FIM["`Avaliação da experiencia`"]
+SELECDAT["Selecionar data"]
+SELECHOR["Selecionar horário para iniciar atentimento"]
+SELECVIEW["Selecionar documento para visualizar"]
+
+TI --> BV
+TI --> CHAT
+BV -- Usuário ja cadastrado --> LOGIN
+LOGIN ------>|É usuário| VALIDACAO
+
+BV -- Novo usuário --> CADASTRO
+CADASTRO --> DADOS
+DADOS -- Cadastra usuário --> VALIDACAO
+VALIDACAO -- Edição dos dados preencidos --> DADOS
+VALIDACAO --> ATEN
+ATEN -- Exame por encaminhamento --> DOCS
+ATEN -- Consulta por encaminhamento --> DOCS
+ATEN -- Agendar consulta --> CONS
+CONS -- Envio do convênio --> CONV
+DOCS -- Uploa dos documentos --> DAT
+CONV --> DAT
+DAT -- Envio do agendamento e validação --> FIM
+
+LOGIN ----->|É Administador| SELECDAT
+SELECDAT-->SELECHOR
+SELECHOR --->|Finalizar atendimento| SELECDAT
+SELECHOR ----> SELECVIEW
+SELECVIEW --->|Finalizar atendimento| SELECDAT
+SELECVIEW --> PDF[PDF's]
+
+```
+
+
+<!-- > Descreva aqui qual(is) tecnologias você vai usar para resolver o seu
 > problema, ou seja, implementar a sua solução. Liste todas as
 > tecnologias envolvidas, linguagens a serem utilizadas, serviços web,
 > frameworks, bibliotecas, IDEs de desenvolvimento, e ferramentas.
@@ -504,596 +652,133 @@ gitGraph
 > Inclua os diagramas de User Flow, esboços criados pelo grupo
 > (stoyboards), além dos protótipos de telas (wireframes). Descreva cada
 > item textualmente comentando e complementando o que está apresentado
-> nas imagens.
+> nas imagens. -->
 
 ## Arquitetura da solução
 
-......  COLOQUE AQUI O SEU TEXTO E O DIAGRAMA DE ARQUITETURA .......
+![Arquitetura](images/arquitetura_de_solucao.png)
+#### 1. Navegador:
+**1.1** - Tecnologias Utilizadas:
+- HTML;
+- CSS;
+- JavaScript;
+- BootStrap;
+- Firebase;
 
-> Inclua um diagrama da solução e descreva os módulos e as tecnologias
-> que fazem parte da solução. Discorra sobre o diagrama.
->
-> **Exemplo do diagrama de Arquitetura**:
->
-> ![Exemplo de Arquitetura](images/arquitetura-exemplo.png)
+**1.2** - Funcionalidades:
+- Interface
+  - Utilizamos os recursos HTML, CSS e Framework Bootstrap para a estilização e padronização das páginas;
+  - Utilizamos o JavaScript para a responsividade dos elementos, integração com o firebase, e para fazer a funcionalidade de componentes como os calendários das páginas de agendamentos.
+
+**1.3** - Armazenamento:
+- Todo o armazenamento de conteúdos foi feito utilizando o firebase.
+  - ID's;
+  - Nome de usuários;
+  - Endereços;
+  - Hospitais;
+  - Credenciais de acesso(email's/senhas);
+  - Documentos;
+
+#### 2. Internet:
+**2.1** - Hospedagem:
+- O sistema escolhido para a hospedagem da aplicação foi o **GitHub Pages**;
+- O banco de dados da aplicação foi feito por meio do **Firebase**.
+
+**2.2** - Fluxo de dados:
+- Leitura de Itens:
+  - O navegador envia o requisito para o Firebase, e busca dados como documentração, nomes, médicos com a especialidade escolhida e nomes dos hospitais;
+- Escrita de Itens:
+  - O navegador faz a requisição para o banco do Firebase que por sua vez retorna os dados solicitados.
+
+#### Integração:
+
+**Firebase:**
+Utilizamos a api do firebase para pegar e armazenar as informações de hospitais, consultas, pacientes e médicos no firebase.
 
 # Avaliação da Aplicação
 
-......  COLOQUE AQUI O SEU TEXTO ......
+As avaliações realizadas no Agendai foram feitas para garantir uma melhor usabilidade e compatibilidade para os usuários. Segue abaixo os cenários utilizados para a realização dos testes.
 
-> Apresente os cenários de testes utilizados na realização dos testes da
-> sua aplicação. Escolha cenários de testes que demonstrem os requisitos
-> sendo satisfeitos.
+# Cenários de Testes
+
+Os cenarios abaixo foram escolhidos para mostrar se o sistema estária totalmente integrado com a API do Firebase e traria todos os resultados esperados para um bom funcionamento da aplicação.
 
 ## Plano de Testes
 
-......  COLOQUE AQUI O SEU TEXTO ......
+Escolhemos alguns modelos de testes para verificar o funcionamento da aplicação:
 
-> Enumere quais cenários de testes foram selecionados para teste. Neste
-> tópico o grupo deve detalhar quais funcionalidades avaliadas, o grupo
-> de usuários que foi escolhido para participar do teste e as
-> ferramentas utilizadas.
->
-> **Links Úteis**:
->
-> - [IBM - Criação e Geração de Planos de Teste](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
-> - [Práticas e Técnicas de Testes Ágeis](http://assiste.serpro.gov.br/serproagil/Apresenta/slides.pdf)
-> - [Teste de Software: Conceitos e tipos de testes](https://blog.onedaytesting.com.br/teste-de-software/)
+>  1. Criando nova conta:
+> > - **Funcionalidade:** Criar nova conta de usuário;
+> > - **Usuários:** Administradores(médicos e assistentes) / Usuários comuns(pacientes); 
+> > - **Ferramentas:** Testes manuais / inspeção por meio da DevTools do Google.
+>  2. Login / Logout:
+> > - **Funcionalidade:** Entrar ou sair da sessão iniciada;
+> > - **Usuários:** Administradores(médicos e assistentes) / Usuários comuns(pacientes);
+> > - **Ferramentas:** Testes manuais / inspeção por meio da DevTools do Google.
+>  3. Selecionar horário e paciente marcado:
+> > - **Funcionalidades:**
+> > > - Selecionar uma data no calendário;
+> > > - Escolher um paciente marcado no dia;
+> > > - Exibir a documentação encaminhada pelo paciente;
+> > - **Usuários:** Administradores(médicos e assistentes)
+> > - **Ferramentas:** Testes manuais / inspeção por meio da DevTools do Google.
+>  4. Validação de dados:
+> > - **Funcionalidades:** Verificar se os dados antes antes preenchidos pelo pacientes continuam os mesmos e atualizados;
+> > - **Usuários:** Usuários comuns(pacientes);
+> > - **Ferramentas:** Testes manuais / inspeção por meio da DevTools do Google.
+>  5. Tipo de agendamento:
+> > - **Funcionalidades:** Escolher o tipo de consulta que o usuário deseja marcar;
+> > - **usuários:** Usuários comuns(pacientes);
+> > - **Ferramentas:** Testes manuais / inspeção por meio da DevTools do Google;
+>  6. Envio de documentos:
+> > - **Funcionalidades:** Encaminhar documentos como carteirinha de convênios e pedidos médicos;
+> > - **Usuários:** Usuários comuns(pacientes);
+> > - **Ferramentas:** Testes manuais / inspeção por meio da DevTools do Google.
+>  7. Agendar consulta:
+> > - **Funcionalidades:**
+> > > - Escolher dia;
+> > > - Escolher horário;
+> > > - Agendar a consulta;
+> > - **Usuários:** Usuário comum(pacientes);
+> > - **Ferramentas:** Testes manuais / inspeção por meio da DevTools do Google.
+>  8. Feedback:
+> > - **Funcionalidades:** Avaliação do usuário sobre o uso da aplicação;
+> > - **Usuários:** Usuário comum(pacientes);
+> > - **Ferramentas:** Testes manuais / inspeção por meio da DevTools do Google.
 
 ## Ferramentas de Testes (Opcional)
 
-......  COLOQUE AQUI O SEU TEXTO ......
+Para realizar os testes utilizamos de meios que facilitariam o processo de teste para a equipe.
 
-> Comente sobre as ferramentas de testes utilizadas.
+> #### 1 - Testes manuais
+> > Fizemos os seguintes testes manuais na aplicação:
+> > > - Criar novos usuários;
+> > > - Envios de documentos;
+> > > - Realizar a marcação de horários para usuários;
+> > > - Olhar se as marcações aparecem para o administrador(médico/assistente);
+> > > - Fazer o feedback e ver se o mesmo está sendo armazenado.
 >
-> **Links Úteis**:
->
-> - [Ferramentas de Test para Java Script](https://geekflare.com/javascript-unit-testing/)
-> - [UX Tools](https://uxdesign.cc/ux-user-research-and-user-testing-tools-2d339d379dc7)
+> #### 2 - Outras ferramentas
+> > Também utilizamos de outras ferramentas para a realização dos testes:
+> > - DevTools do Google para a inspeção de caminhos.
 
 ## Registros de Testes
 
 ......  COLOQUE AQUI O SEU TEXTO ......
 
-> Discorra sobre os resultados do teste. Ressaltando pontos fortes e
+<!-- > Discorra sobre os resultados do teste. Ressaltando pontos fortes e
 > fracos identificados na solução. Comente como o grupo pretende atacar
 > esses pontos nas próximas iterações. Apresente as falhas detectadas e
-> as melhorias geradas a partir dos resultados obtidos nos testes.
+> as melhorias geradas a partir dos resultados obtidos nos testes. -->
 
 # Referências
 
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Inclua todas as referências (livros, artigos, sites, etc) utilizados
-> no desenvolvimento do trabalho.
->
-> **Links Úteis**:
->
-> - [Formato ABNT](https://www.normastecnicas.com/abnt/trabalhos-academicos/referencias/)
-=======
-
-# Informações do Projeto
-
-`TÍTULO DO PROJETO`  
-
-......  COLOQUE AQUI O SEU TEXTO ......
-
-`CURSO`
-
-......  COLOQUE AQUI O SEU TEXTO ......
-
-## Participantes
-
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Inclua a lista dos membros da equipe com seus nomes completos.
->
-> Os membros do grupo são:
->
-> - Fulano da Silva
-> - Ciclano Albuquerque
-
-# Estrutura do Documento
-
-- [Informações do Projeto](#informações-do-projeto)
-  - [Agendaí](#agendaí)
-    - [Sistemas de Informação](#sistemas-de-informação)
-  - [Participantes](#participantes)
-- [Estrutura do Documento](#estrutura-do-documento)
-- [Introdução](#introdução)
-  - [Problema](#problema)
-  - [Objetivos](#objetivos)
-  - [Justificativa](#justificativa)
-  - [Público-Alvo](#público-alvo)
-    - [Pacientes](#pacientes)
-    - [Profissionais de Saúde (Médicos, Enfermeiros, e outros)](#profissionais-de-saúde-médicos-enfermeiros-e-outros)
-    - [Administradores de Clínicas e Hospitais](#administradores-de-clínicas-e-hospitais)
-    - [Equipe de Suporte Técnico](#equipe-de-suporte-técnico)
-    - [Famílias e Cuidadores](#famílias-e-cuidadores)
-  - [Especificações do Projeto](#especificações-do-projeto)
-  - [Personas e Mapas de Empatia](#personas-e-mapas-de-empatia)
-  - [Histórias de Usuários](#histórias-de-usuários)
-  - [Requisitos](#requisitos)
-    - [Requisitos Funcionais](#requisitos-funcionais)
-    - [Requisitos não Funcionais](#requisitos-não-funcionais)
-  - [Restrições](#restrições)
-- [Projeto de Interface](#projeto-de-interface)
-  - [User Flow](#user-flow)
-  - [Wireframes](#wireframes)
-- [Metodologia](#metodologia)
-  - [Divisão de Papéis](#divisão-de-papéis)
-  - [Ferramentas](#ferramentas)
-  - [Controle de Versão](#controle-de-versão)
-- [**############## SPRINT 1 ACABA AQUI #############**](#-sprint-1-acaba-aqui-)
-- [Projeto da Solução](#projeto-da-solução)
-  - [Tecnologias Utilizadas](#tecnologias-utilizadas)
-  - [Arquitetura da solução](#arquitetura-da-solução)
-- [Avaliação da Aplicação](#avaliação-da-aplicação)
-  - [Plano de Testes](#plano-de-testes)
-  - [Ferramentas de Testes (Opcional)](#ferramentas-de-testes-opcional)
-  - [Registros de Testes](#registros-de-testes)
-- [Referências](#referências)
-- [Informações do Projeto](#informações-do-projeto-1)
-  - [Participantes](#participantes-1)
-- [Estrutura do Documento](#estrutura-do-documento-1)
-- [Introdução](#introdução-1)
-  - [Problema](#problema-1)
-  - [Objetivos](#objetivos-1)
-  - [Justificativa](#justificativa-1)
-  - [Público-Alvo](#público-alvo-1)
-- [Especificações do Projeto](#especificações-do-projeto-1)
-  - [Personas, Empatia e Proposta de Valor](#personas-empatia-e-proposta-de-valor)
-  - [Histórias de Usuários](#histórias-de-usuários-1)
-  - [Requisitos](#requisitos-1)
-    - [Requisitos Funcionais](#requisitos-funcionais-1)
-    - [Requisitos não Funcionais](#requisitos-não-funcionais-1)
-  - [Restrições](#restrições-1)
-- [Projeto de Interface](#projeto-de-interface-1)
-  - [User Flow](#user-flow-1)
-  - [Wireframes](#wireframes-1)
-- [Metodologia](#metodologia-1)
-  - [Divisão de Papéis](#divisão-de-papéis-1)
-  - [Ferramentas](#ferramentas-1)
-  - [Controle de Versão](#controle-de-versão-1)
-- [**############## SPRINT 1 ACABA AQUI #############**](#-sprint-1-acaba-aqui--1)
-- [Projeto da Solução](#projeto-da-solução-1)
-  - [Tecnologias Utilizadas](#tecnologias-utilizadas-1)
-  - [Arquitetura da solução](#arquitetura-da-solução-1)
-- [Avaliação da Aplicação](#avaliação-da-aplicação-1)
-  - [Plano de Testes](#plano-de-testes-1)
-  - [Ferramentas de Testes (Opcional)](#ferramentas-de-testes-opcional-1)
-  - [Registros de Testes](#registros-de-testes-1)
-- [Referências](#referências-1)
-
-# Introdução
-
-## Problema
-
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Nesse momento você deve apresentar o problema que a sua aplicação deve
-> resolver. No entanto, não é a hora de comentar sobre a aplicação.
-> Descreva também o contexto em que essa aplicação será usada, se
-> houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de
-> fato existir, pois ainda não é a hora de apresentar requisitos
-> detalhados ou projetos.
->
-> Nesse momento, o grupo pode optar por fazer uso
-> de ferramentas como Design Thinking, que permite um olhar de ponta a
-> ponta para o problema.
->
-> **Links Úteis**:
->
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
-
-## Objetivos
-
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Aqui você deve descrever os objetivos do trabalho indicando que o
-> objetivo geral é desenvolver um software para solucionar o problema
-> apresentado acima. Apresente também alguns (pelo menos 2) objetivos
-> específicos dependendo de onde você vai querer concentrar a sua
-> prática investigativa, ou como você vai aprofundar no seu trabalho.
->
-> **Links Úteis**:
->
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
-
-## Justificativa
-
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Descreva a importância ou a motivação para trabalhar com esta aplicação
-> que você escolheu. Indique as razões pelas quais você escolheu seus
-> objetivos específicos ou as razões para aprofundar em certos aspectos
-> do software.
->
-> O grupo de trabalho pode fazer uso de questionários, entrevistas e
-> dados estatísticos, que podem ser apresentados, com o objetivo de
-> esclarecer detalhes do problema que será abordado pelo grupo.
->
-> **Links Úteis**:
->
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
-
-## Público-Alvo
-
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Descreva quem serão as pessoas que usarão a sua aplicação indicando os
-> diferentes perfis. O objetivo aqui não é definir quem serão os
-> clientes ou quais serão os papéis dos usuários na aplicação. A ideia
-> é, dentro do possível, conhecer um pouco mais sobre o perfil dos
-> usuários: conhecimentos prévios, relação com a tecnologia, relações
-> hierárquicas, etc.
->
-> Adicione informações sobre o público-alvo por meio de uma descrição
-> textual, ou diagramas de personas, mapa de stakeholders, ou como o
-> grupo achar mais conveniente.
->
-> **Links Úteis**:
->
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
-
-# Especificações do Projeto
-
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Apresente uma visão geral do que será abordado nesta parte do
-> documento, enumerando as técnicas e/ou ferramentas utilizadas para
-> realizar a especificações do projeto
-
-## Personas, Empatia e Proposta de Valor
-
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Relacione as personas identificadas no seu projeto, os respectivos mapas de empatia e
-> mapas da proposta de valor. Lembre-se que você deve ser enumerar e descrever precisamente
-> e de forma personalizada todos os principais envolvidos com a solução almeja.
->
-> Para tanto, baseie-se tanto nos documentos disponibilizados na disciplina
-> e/ou nos seguintes links:
->
-> **Links Úteis**:
->
-> - [Persona x Público-alvo](https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/)
-> - [O que é persona?](https://resultadosdigitais.com.br/blog/persona-o-que-e/)
-> - [Rock Content](https://rockcontent.com/blog/personas/)
-> - [Hotmart](https://blog.hotmart.com/pt-br/como-criar-persona-negocio/)
-> - [Mapa de Empatia](https://resultadosdigitais.com.br/blog/mapa-da-empatia/)
-> - [Como fazer um mapa de empatia - Vídeo](https://www.youtube.com/watch?v=JlKHGpVoA2Y)
-> - [Canvas da Proposta de Valor](https://analistamodelosdenegocios.com.br/canvas-da-proposta-de-valor/)
->
->
-> **Exemplo de Persona**
->
-> ![Exemplo de Persona](images/persona.png)
->
-> Fonte: [Como criar uma persona para o seu negócio](https://raissaviegas.com.br/como-criar-uma-persona/)
->
-> **Exemplo de Proposta de Valor**
-> ![Exemplo da Proposta de Valor](images/proposta_valor.png)
-
-## Histórias de Usuários
-
-Com base na análise das personas forma identificadas as seguintes histórias de usuários:
-
-|EU COMO... `PERSONA`| QUERO/PRECISO ... `FUNCIONALIDADE` |PARA ... `MOTIVO/VALOR`                 |
-|--------------------|------------------------------------|----------------------------------------|
-|Usuário do sistema  | Registrar minhas tarefas           | Não esquecer de fazê-las               |
-|Administrador       | Alterar permissões                 | Permitir que possam administrar contas |
-
-> Apresente aqui as histórias de usuário que são relevantes para o
-> projeto de sua solução. As Histórias de Usuário consistem em uma
-> ferramenta poderosa para a compreensão e elicitação dos requisitos
-> funcionais e não funcionais da sua aplicação. Se possível, agrupe as
-> histórias de usuário por contexto, para facilitar consultas
-> recorrentes à essa parte do documento.
->
-> **Links Úteis**:
->
-> - [Histórias de usuários com exemplos e template](https://www.atlassian.com/br/agile/project-management/user-stories)
-> - [Como escrever boas histórias de usuário (User Stories)](https://medium.com/vertice/como-escrever-boas-users-stories-hist%C3%B3rias-de-usu%C3%A1rios-b29c75043fac)
-
-## Requisitos
-
-As tabelas que se seguem apresentam os requisitos funcionais e não funcionais que detalham o escopo do projeto.
-
-### Requisitos Funcionais
-
-|ID    | Descrição do Requisito  | Prioridade |
-|------|-----------------------------------------|----|
-|RF-001| Permitir que o usuário cadastre tarefas | ALTA |
-|RF-002| Emitir um relatório de tarefas no mês   | MÉDIA |
-
-### Requisitos não Funcionais
-
-|ID     | Descrição do Requisito  |Prioridade |
-|-------|-------------------------|----|
-|RNF-001| O sistema deve ser responsivo para rodar em um dispositivos móvel | MÉDIA |
-|RNF-002| Deve processar requisições do usuário em no máximo 3s |  BAIXA |
-
-> Com base nas Histórias de Usuário, enumere os requisitos da sua
-> solução. Classifique esses requisitos em dois grupos:
->
-> - [Requisitos Funcionais (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
->   correspondem a uma funcionalidade que deve estar presente na
->   plataforma (ex: cadastro de usuário).
->
-> - [Requisitos Não Funcionais (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
->   correspondem a uma característica técnica, seja de usabilidade,
->   desempenho, confiabilidade, segurança ou outro (ex: suporte a
->   dispositivos iOS e Android).
->
-> Lembre-se que cada requisito deve corresponder à uma e somente uma
-> característica alvo da sua solução. Além disso, certifique-se de que
-> todos os aspectos capturados nas Histórias de Usuário foram cobertos.
->
-> **Links Úteis**:
->
-> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
-
-## Restrições
-
-O projeto está restrito pelos itens apresentados na tabela a seguir.
-
-|ID| Restrição                                             |
-|--|-------------------------------------------------------|
-|01| O projeto deverá ser entregue até o final do semestre |
-|02| Não pode ser desenvolvido um módulo de backend        |
-
-> Enumere as restrições à sua solução. Lembre-se de que as restrições
-> geralmente limitam a solução candidata.
->
-> **Links Úteis**:
->
-> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
-
-# Projeto de Interface
-
-......  COLOQUE AQUI O SEU TEXTO DE INTRODUÇÃO ......
-
-> Apresente as principais interfaces da solução. Discuta como
-> foram elaboradas de forma a atender os requisitos funcionais, não
-> funcionais e histórias de usuário abordados nas [Especificações do
-> Projeto](#especificações-do-projeto).
-
-## User Flow
-
-......  INCLUA AQUI O DIAGRAMA COM O FLUXO DO USUÁRIO NA APLICAÇÃO ......
-
-> Fluxo de usuário (User Flow) é uma técnica que permite ao desenvolvedor
-> mapear todo fluxo de telas do site ou app. Essa técnica funciona
-> para alinhar os caminhos e as possíveis ações que o usuário pode
-> fazer junto com os membros de sua equipe.
->
-> **Links Úteis**:
->
-> - [User Flow: O Quê É e Como Fazer?](https://medium.com/7bits/fluxo-de-usu%C3%A1rio-user-flow-o-que-%C3%A9-como-fazer-79d965872534)
-> - [User Flow vs Site Maps](http://designr.com.br/sitemap-e-user-flow-quais-as-diferencas-e-quando-usar-cada-um/)
-> - [Top 25 User Flow Tools & Templates for Smooth](https://www.mockplus.com/blog/post/user-flow-tools)
->
-> **Exemplo**:
->
-> ![Exemplo de UserFlow](images/userflow.jpg)
-
-## Wireframes
-
-......  INCLUA AQUI OS WIREFRAMES DAS TELAS DA APLICAÇÃO COM UM BREVE DESCRITIVO ......
-
-> Wireframes são protótipos das telas da aplicação usados em design de interface para sugerir a
-> estrutura de um site web e seu relacionamentos entre suas
-> páginas. Um wireframe web é uma ilustração semelhante ao
-> layout de elementos fundamentais na interface.
->
-> **Links Úteis**:
->
-> - [Ferramentas de Wireframes](https://rockcontent.com/blog/wireframes/)
-> - [Figma](https://www.figma.com/)
-> - [Adobe XD](https://www.adobe.com/br/products/xd.html#scroll)
-> - [MarvelApp](https://marvelapp.com/developers/documentation/tutorials/)
->
-> **Exemplo**:
->
-> ![Exemplo de Wireframe](images/wireframe-example.png)
-
-# Metodologia
-
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Nesta parte do documento, você deve apresentar a metodologia
-> adotada pelo grupo, descrevendo o processo de trabalho baseado nas metodologias ágeis,
-> a divisão de papéis e tarefas, as ferramentas empregadas e como foi realizada a
-> gestão de configuração do projeto via GitHub.
->
-> Coloque detalhes sobre o processo de Design Thinking e a implementação do Framework Scrum seguido
-> pelo grupo. O grupo poderá fazer uso de ferramentas on-line para acompanhar
-> o andamento do projeto, a execução das tarefas e o status de desenvolvimento
-> da solução.
->
-> **Links Úteis**:
->
-> - [Tutorial Trello](https://trello.com/b/8AygzjUA/tutorial-trello)
-> - [Gestão ágil de projetos com o Trello](https://www.youtube.com/watch?v=1o9BOMAKBRE)
-> - [Gerência de projetos - Trello com Scrum](https://www.youtube.com/watch?v=DHLA8X_ujwo)
-> - [Tutorial Slack](https://slack.com/intl/en-br/)
-
-## Divisão de Papéis
-
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Apresente a divisão de papéis e tarefas entre os membros do grupo.
->
-> **Links Úteis**:
->
-> - [11 Passos Essenciais para Implantar Scrum no seu Projeto](https://mindmaster.com.br/scrum-11-passos/)
-> - [Scrum em 9 minutos](https://www.youtube.com/watch?v=XfvQWnRgxG0)
-
-## Ferramentas
-
-......  COLOQUE AQUI O SEU TEXTO - SIGA O EXEMPLO DA TABELA ABAIXO  ......
-
-| Ambiente  | Plataforma              |Link de Acesso |
-|-----------|-------------------------|---------------|
-|Processo de Design Thinkgin  | Miro |  <https://miro.com/XXXXXXX> |
-|Repositório de código | GitHub | <https://github.com/XXXXXXX> |
-|Hospedagem do site | Heroku |  <https://XXXXXXX.herokuapp.com> |
-|Protótipo Interativo | MavelApp ou Figma | <https://figma.com/XXXXXXX> |
-
->
-> Liste as ferramentas empregadas no desenvolvimento do
-> projeto, justificando a escolha delas, sempre que possível.
->
-> As ferramentas empregadas no projeto são:
->
-> - Editor de código.
-> - Ferramentas de comunicação
-> - Ferramentas de diagramação
-> - Plataforma de hospedagem
->
-> O editor de código foi escolhido porque ele possui uma integração com o
-> sistema de versão. As ferramentas de comunicação utilizadas possuem
-> integração semelhante e por isso foram selecionadas. Por fim, para criar
-> diagramas utilizamos essa ferramenta por melhor captar as
-> necessidades da nossa solução.
->
-> **Links Úteis - Hospedagem**:
->
-> - [Getting Started with Heroku](https://devcenter.heroku.com/start)
-> - [Crie seu Site com o HostGator](https://www.hostgator.com.br/como-publicar-seu-site)
-> - [GoDady](https://br.godaddy.com/how-to)
-> - [GitHub Pages](https://pages.github.com/)
-
-## Controle de Versão
-
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Discuta como a configuração do projeto foi feita na ferramenta de
-> versionamento escolhida. Exponha como a gerência de tags, merges,
-> commits e branchs é realizada. Discuta como a gerência de issues foi
-> realizada.
-> A ferramenta de controle de versão adotada no projeto foi o
-> [Git](https://git-scm.com/), sendo que o [Github](https://github.com)
-> foi utilizado para hospedagem do repositório `upstream`.
->
-> O projeto segue a seguinte convenção para o nome de branchs:
->
-> - `master`: versão estável já testada do software
-> - `unstable`: versão já testada do software, porém instável
-> - `testing`: versão em testes do software
-> - `dev`: versão de desenvolvimento do software
->
-> Quanto à gerência de issues, o projeto adota a seguinte convenção para
-> etiquetas:
->
-> - `bugfix`: uma funcionalidade encontra-se com problemas
-> - `enhancement`: uma funcionalidade precisa ser melhorada
-> - `feature`: uma nova funcionalidade precisa ser introduzida
->
-> **Links Úteis**:
->
-> - [Tutorial GitHub](https://guides.github.com/activities/hello-world/)
-> - [Git e Github](https://www.youtube.com/playlist?list=PLHz_AreHm4dm7ZULPAmadvNhH6vk9oNZA)
-> - [5 Git Workflows & Branching Strategy to deliver better code](https://zepel.io/blog/5-git-workflows-to-improve-development/)
->
-> **Exemplo - GitHub Feature Branch Workflow**:
->
-> ![Exemplo de Wireframe](images/Github-Workflow.png)
-
-# **############## SPRINT 1 ACABA AQUI #############**
-
-# Projeto da Solução
-
-......  COLOQUE AQUI O SEU TEXTO ......
-
-## Tecnologias Utilizadas
-
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Descreva aqui qual(is) tecnologias você vai usar para resolver o seu
-> problema, ou seja, implementar a sua solução. Liste todas as
-> tecnologias envolvidas, linguagens a serem utilizadas, serviços web,
-> frameworks, bibliotecas, IDEs de desenvolvimento, e ferramentas.
-> Apresente também uma figura explicando como as tecnologias estão
-> relacionadas ou como uma interação do usuário com o sistema vai ser
-> conduzida, por onde ela passa até retornar uma resposta ao usuário.
->
-> Inclua os diagramas de User Flow, esboços criados pelo grupo
-> (stoyboards), além dos protótipos de telas (wireframes). Descreva cada
-> item textualmente comentando e complementando o que está apresentado
-> nas imagens.
-
-## Arquitetura da solução
-
-......  COLOQUE AQUI O SEU TEXTO E O DIAGRAMA DE ARQUITETURA .......
-
-> Inclua um diagrama da solução e descreva os módulos e as tecnologias
-> que fazem parte da solução. Discorra sobre o diagrama.
->
-> **Exemplo do diagrama de Arquitetura**:
->
-> ![Exemplo de Arquitetura](images/arquitetura-exemplo.png)
-
-# Avaliação da Aplicação
-
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Apresente os cenários de testes utilizados na realização dos testes da
-> sua aplicação. Escolha cenários de testes que demonstrem os requisitos
-> sendo satisfeitos.
-
-## Plano de Testes
-
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Enumere quais cenários de testes foram selecionados para teste. Neste
-> tópico o grupo deve detalhar quais funcionalidades avaliadas, o grupo
-> de usuários que foi escolhido para participar do teste e as
-> ferramentas utilizadas.
->
-> **Links Úteis**:
->
-> - [IBM - Criação e Geração de Planos de Teste](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
-> - [Práticas e Técnicas de Testes Ágeis](http://assiste.serpro.gov.br/serproagil/Apresenta/slides.pdf)
-> - [Teste de Software: Conceitos e tipos de testes](https://blog.onedaytesting.com.br/teste-de-software/)
-
-## Ferramentas de Testes (Opcional)
-
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Comente sobre as ferramentas de testes utilizadas.
->
-> **Links Úteis**:
->
-> - [Ferramentas de Test para Java Script](https://geekflare.com/javascript-unit-testing/)
-> - [UX Tools](https://uxdesign.cc/ux-user-research-and-user-testing-tools-2d339d379dc7)
-
-## Registros de Testes
-
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Discorra sobre os resultados do teste. Ressaltando pontos fortes e
-> fracos identificados na solução. Comente como o grupo pretende atacar
-> esses pontos nas próximas iterações. Apresente as falhas detectadas e
-> as melhorias geradas a partir dos resultados obtidos nos testes.
-
-# Referências
-
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Inclua todas as referências (livros, artigos, sites, etc) utilizados
-> no desenvolvimento do trabalho.
->
-> **Links Úteis**:
->
-> - [Formato ABNT](https://www.normastecnicas.com/abnt/trabalhos-academicos/referencias/)
->
->>>>>>> 576e4073eb686b7caee5801aac8f95491eb4d605:docs/relatorio/Relatorio Tecnico - TEMPLATE.md
->
-> - [Referências Bibliográficas da ABNT](https://comunidade.rockcontent.com/referencia-bibliografica-abnt/)
+Documentação do Firebase:
+- https://firebase.google.com/docs?hl=pt-br
+
+Documentação do JavaScript:
+- https://developer.mozilla.org/pt-BR/docs/Web/JavaScript
+- https://www.w3schools.com/js/
+
+Documentação do Bootstrap:
+- https://getbootstrap.com/docs/5.3/getting-started/introduction/
