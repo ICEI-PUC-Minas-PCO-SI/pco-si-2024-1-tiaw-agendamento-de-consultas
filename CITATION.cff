@@ -1,65 +1,41 @@
-<<<<<<< HEAD
-cff-version: 1.0.1
-message: Please cite this software using these metadata.
-title: 
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Agendai
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
 authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names:
-  - name-suffix: Professor
+  - given-names: Christian
+    family-names: Sena Gomes
+  - given-names: João Pedro Rafael
+    family-names: Santos Silva
+  - given-names: Kayque
+    family-names: dos Santos Almeida
+  - given-names: Yuri
+    family-names: Zocoli Silva
+  - given-names: Amália
+    family-names: Soares Vieira de Vasconcelos
+    name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
-  - name-suffix: Professor
+  - given-names: Leonardo
+    family-names: Vilela Cardoso
+    name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+repository-code: >-
+  https://github.com/ICEI-PUC-Minas-PCO-SI/pco-si-2024-1-tiaw-agendamento-de-consultas
+url: >-
+  https://icei-puc-minas-pco-si.github.io/pco-si-2024-1-tiaw-agendamento-de-consultas/
+abstract: >-
+  O Agendai é uma plataforma online de agendamento de
+  consultas, gerenciamento de conflitos de horários para
+  evitar filas de esperas cansativas e agilizar o processo
+  de atendimento e triagem de pacientes.
 keywords:
-  - 
-  - 
-repository-code: 
+  - Agendamento de Consultas
+  - PUC Minas
 license: CC-BY-4.0
 version: 1.0.0
-date-released: 2022-07-14
-=======
-cff-version: 1.0.1
-message: Please cite this software using these metadata.
-title: 
-authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names:
-  - name-suffix: Professor
-    affiliation: PUC Minas
-    family-names: 
-    given-names: 
-  - name-suffix: Professor
-    affiliation: PUC Minas
-    family-names: 
-    given-names: 
-keywords:
-  - 
-  - 
-repository-code: 
-license: CC-BY-4.0
-version: 1.0.0
-date-released: 2022-07-14
->>>>>>> 576e4073eb686b7caee5801aac8f95491eb4d605
+date-released: '2024-07-04'
