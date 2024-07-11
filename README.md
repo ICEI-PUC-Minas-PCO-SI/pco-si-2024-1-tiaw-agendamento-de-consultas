@@ -18,6 +18,7 @@ para evitar filas de esperas cansativas e agilizar o processo de atendimento e t
 * Leonardo Vilela Cardoso [email](mailto:\\822497@sga.pucminas.br)
 
 ## Instruções de utilização
-
-Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.
+  
+Para acessar a aplicação basta entrar no seguinte link:  
+- [Agendai](https://icei-puc-minas-pco-si.github.io/pco-si-2024-1-tiaw-agendamento-de-consultas/)
 
